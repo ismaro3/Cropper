@@ -19,7 +19,13 @@
         </select>
         <br>
       </span>
+
+
+        <select id="expirationSelect" ng-model="$parent.selectedExpiration" ng-options="val for val in getExpirations()"></select>
+
+        
       <br>
+
 
       <div id="featurePropsForm" ng-repeat="prop in selectedFeature.properties">
         <div class="input-group">

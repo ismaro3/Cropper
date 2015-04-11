@@ -14,6 +14,9 @@ angular.module('CollaborativeMap')
   .directive('featureproperties', ['$compile', 'MapHandler', 'ApiService',
     function($compile, MapHandler, ApiService) {
 
+
+
+
       return {
         restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
         templateUrl: 'partials/featureproperties',
@@ -41,6 +44,7 @@ angular.module('CollaborativeMap')
            * Called from the feature onClick through the map services.
            * @param {Object} feature the leaflet layer
            */
+
           $scope.selectFeature = function(feature, editByUser) {
 
             //TODO: filter simplestyle spec items: https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0
@@ -79,7 +83,9 @@ angular.module('CollaborativeMap')
             //Preselect the selectboxes if a category/preset is available
             if (tmpGeoJSON.properties && tmpGeoJSON.properties.category) {
               $scope.selectedCategory = tmpGeoJSON.properties.category;
+                console.log("Ha cambiado la categoria a" + $scope.selectedCategory);
               setPresetsInScope($scope.selectedCategory);
+
               setTimeout(function() {
                 $('#categorySelect')[0].value = $scope.selectedCategory;
               }, 40);
@@ -112,6 +118,10 @@ angular.module('CollaborativeMap')
           });
 
 
+            $scope.getExpirations = function () {
+
+                return categories[$scope.selectedCategory].expirations;
+            };
           /**
            * Opens a bootstrap modal to show the history of a single feature
            * @param {String} id the feature id
@@ -139,9 +149,9 @@ angular.module('CollaborativeMap')
 
 
           var lastChange = -1;
-          /**
-           * Gets called if a property changes. Only send a change every 1s if no further changes have been made in between to prevent submits on every keystroke.
-           */
+
+          //Llamado cuando cambia una propiedad. Solo envia cambios cada segundo para evitar hacerlo cada vez que se pulsa una tecla.
+            //Controla que haya pasado 1 segundo
           $scope.propertyChanged = function() {
             lastChange = new Date().getTime();
             setTimeout(function() {
@@ -171,14 +181,17 @@ angular.module('CollaborativeMap')
 
           };
 
-          /**
-           * Include the feature properties back into the layer and call the update function
-           */
 
+
+            /**
+             * Añade la nueva propiedad a la layer y llama a la funcion de actualizar.
+             */
           function updateFeature() {
+              //Añade la propiedad a los datos de la feature
             $scope.selectedFeature.properties.forEach(function(prop) {
               $scope.selectedFeature.feature.properties[prop.key] = prop.value;
             });
+              //Actualiza la propiedad indicada
             MapHandler.updateOnlyProperties($scope.selectedFeature);
           }
 
@@ -186,6 +199,7 @@ angular.module('CollaborativeMap')
            * Adds a new property to the feature.
            * @param {Number} key key code of the ng-key event
            */
+
           $scope.newProperty = function(key) {
             var newProp = function() {
               if ($scope.newKey && $scope.newValue) {
@@ -421,7 +435,16 @@ angular.module('CollaborativeMap')
               $scope.presets.push(presets[member]);
             });
 
+
+
           }
+
+
+
+
+
+
+
 
           /**
            * Returns the index of a preset in the categories member array
