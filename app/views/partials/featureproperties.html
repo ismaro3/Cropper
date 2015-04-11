@@ -30,7 +30,12 @@
         <input id="foto" ng-model="$parent.selectedExpiration" value="Insert a photography" >
         </input>
 
-      <br>
+        <br>
+        <form method="post" enctype="multipart/form-data" action="/file-upload">
+            <input type="file" name="image">
+            <input type="submit">
+        </form>
+        <br>
 
 
       <div id="featurePropsForm" ng-repeat="prop in selectedFeature.properties | filter: {key: '!expiration'}">
