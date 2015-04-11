@@ -240,6 +240,9 @@ angular.module('CollaborativeMap')
                         $scope.propertyChanged();
 
                     };
+
+
+
                     /**
                      * Añade la nueva propiedad a la layer y llama a la funcion de actualizar.
                      */
