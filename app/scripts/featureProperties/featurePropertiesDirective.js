@@ -81,8 +81,10 @@ angular.module('CollaborativeMap')
 
                         // MODIFIED
                         $scope.selectedExpiration = tmpGeoJSON.properties.expiration;
-                        if (!$scope.selectedExpiration) {
-                            $('#expirationSelect')[0].value = $scope.selectedExpiration;
+                        if ($scope.selectedExpiration) {
+                            $scope.default = $scope.selectedExpiration;
+                        } else {
+                            $scope.default = '1h';
                         }
 
 
@@ -125,8 +127,9 @@ angular.module('CollaborativeMap')
 
 
                     $scope.getExpirations = function () {
-
-                        return categories[$scope.selectedCategory].expirations;
+                        if ($scope.selectedCategory) {
+                            return categories[$scope.selectedCategory].expirations;
+                        }
                     };
                     /**
                      * Opens a bootstrap modal to show the history of a single feature
@@ -208,7 +211,7 @@ angular.module('CollaborativeMap')
 
                         });
                         if(found==false){
-                            $scope.selectedFeatures.properties.push({
+                            $scope.selectedFeature.properties.push({
                                'key':'expiration',
                                 'value' : $scope.selectedExpiration
                             });

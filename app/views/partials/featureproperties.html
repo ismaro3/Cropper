@@ -21,7 +21,9 @@
       </span>
 
 
-        <select id="expirationSelect" ng-model="$parent.selectedExpiration" ng-options="val for val in getExpirations()" ng-change="expirationChanged()"></select>
+        <select id="expirationSelect" ng-model="$parent.selectedExpiration" ng-options="val for val in getExpirations() " ng-change="expirationChanged()">
+            <option value="" selected>{{default}}</option>
+        </select>
 
         <br><br>
 
