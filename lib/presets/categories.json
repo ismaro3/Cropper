@@ -11,6 +11,12 @@
       "building/residential",
       "building"
     ],
+    "expirations": [
+      "1h",
+      "12h",
+      "24h",
+      "48h"
+    ],
     "style": {
       "stroke": "#F00",
       "fill": "#F00"

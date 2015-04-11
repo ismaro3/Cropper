@@ -76,17 +76,15 @@ angular.module('CollaborativeMap')
         link: function postLink($scope) {
 
           //expose map for debugging purposes
-          //var map = window._map = L.mapbox.map('map', 'dnns.h8dkb1bh');
-            printf("hasta aqui");
-            navigator.geolocation.getCurrentPosition(function(position){
-
-            });
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-
-          var map = window._map = L.mapbox.map('map')
-            .setView([latitude, longitude], 14);
-
+          //var map = window._map = L.mapbox.map('map', 'dnns.h8dkb1bh')
+          if (navigator.geolocation) {
+              var pos = navigator.geolocation.getCurrentPosition(function(position) {
+                  var latitude = position.coords.latitude;
+                  var longitude = position.coords.longitude;
+                  map.panTo([latitude, longitude]);
+              });
+          }
+          var map = window._map = L.mapbox.map('map').setView([51.95577098349905, 7.635455131530762], 14);
 
           var mapLink = '<a href="http://www.esri.com/">Esri</a>';
           var wholink = 'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
@@ -106,7 +104,7 @@ angular.module('CollaborativeMap')
             position: 'topleft'
           }).addTo(map);
          
-         map.infoControl.setPosition('bottomleft');
+          map.infoControl.setPosition('bottomleft');
           // Initialise the FeatureGroup to store editable layers
           var drawnItems = window.drawnItems = new L.FeatureGroup();
           map.addLayer(drawnItems);
