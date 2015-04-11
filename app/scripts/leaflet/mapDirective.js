@@ -31,6 +31,7 @@ angular.module('CollaborativeMap')
         ApiService.getFeaturesOboe(mapId)
           .node('rows.*', function(row) {
 
+
             // This callback will be called everytime a new object is
             // found in the foods array.
             MapHandler.addGeoJSONFeature(map, {

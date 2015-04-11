@@ -21,7 +21,7 @@ angular.module('CollaborativeMap')
                 replace: true,
                 link: function postLink($scope) {
 
-                    $scope.selectedExpiration = undefined;
+                    $scope.selectedExpiration = '1h';
                     /**
                      * Toggles the visibility of the featureproprties view
                      */
@@ -76,16 +76,15 @@ angular.module('CollaborativeMap')
                                     'key': prop,
                                     'value': tmpGeoJSON.properties[prop]
                                 });
-
-
                             }
-
                         }
-                        //ñapa para que se añada la expiración ap ropiedades
-                        $scope.selectedFeature.properties.push({
-                            'key': "expiration",
-                            'value': undefined
-                        });
+
+                        // MODIFIED
+                        $scope.selectedExpiration = tmpGeoJSON.properties.expiration;
+                        if (!$scope.selectedExpiration) {
+                            $('#expirationSelect')[0].value = $scope.selectedExpiration;
+                        }
+
 
                         //Preselect the selectboxes if a category/preset is available
                         if (tmpGeoJSON.properties && tmpGeoJSON.properties.category) {
