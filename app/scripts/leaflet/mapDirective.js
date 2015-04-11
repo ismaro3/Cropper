@@ -77,8 +77,15 @@ angular.module('CollaborativeMap')
 
           //expose map for debugging purposes
           //var map = window._map = L.mapbox.map('map', 'dnns.h8dkb1bh');
+            printf("hasta aqui");
+            navigator.geolocation.getCurrentPosition(function(position){
+
+            });
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
           var map = window._map = L.mapbox.map('map')
-            .setView([51.95577098349905, 7.635455131530762], 14);
+            .setView([latitude, longitude], 14);
 
 
           var mapLink = '<a href="http://www.esri.com/">Esri</a>';
