@@ -21,9 +21,15 @@
       </span>
 
 
-        <select id="expirationSelect" ng-model="$parent.selectedExpiration" ng-options="val for val in getExpirations()"></select>
+        <select id="expirationSelect" ng-model="$parent.selectedExpiration" ng-options="val for val in getExpirations()">
+            <option value="" disabled selected>Select time until expiration</option>
+        </select>
 
-        
+
+
+        <input id="foto" ng-model="$parent.selectedExpiration" value="Insert a photography" >
+        </input>
+
       <br>
 
 
