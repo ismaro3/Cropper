@@ -1993,6 +1993,200 @@
         },
         "name": "Apartments"
     },
+    "building/Plague": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Plague"
+      },
+      "name": "Plague"
+    },
+    "building/Tornado": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Tornado"
+      },
+      "name": "Tornado"
+    },
+
+    "building/Cyclone": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Cyclone"
+      },
+      "name": "Cyclone"
+    },
+    "building/Flood": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Flood"
+      },
+      "name": "Flood"
+    },
+    "building/Avalanche": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Avalanche"
+      },
+      "name": "Avalanche"
+    },
+    "building/Snowfal": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Snowfal"
+      },
+      "name": "Snowfal"
+    },
+    "building/Rise": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Rise"
+      },
+      "name": "Rise"
+    },
+    "building/Hail": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Hail"
+      },
+      "name": "Hail"
+    },
+    "building/Drought": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Drought"
+      },
+      "name": "Drought"
+    },
+    "building/Blizzard": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Blizzard"
+      },
+      "name": "Blizzard"
+    },
+    "building/Electric_strom": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Electric_strom"
+      },
+      "name": "Electric_strom"
+    },
+
+    "building/Sandstorm": {
+      "icon": "commercial",
+      "fields": [
+        "address",
+        "levels"
+      ],
+      "geometry": [
+        "point",
+        "vertex",
+        "area"
+      ],
+      "tags": {
+        "building": "Sandstorm"
+      },
+      "name": "Sandstorm"
+    },
     "building/barn": {
         "icon": "building",
         "fields": [
