@@ -15,8 +15,7 @@
       "building/Drought",
       "building/Blizzard",
       "building/Electric_storm",
-      "building/Sandstorm",
-      "building/"
+      "building/Sandstorm"
     ],
     "expirations": [
       "1h",
@@ -31,19 +30,20 @@
   },
   "category-landuse": {
     "geometry": "area",
-    "name": "Crop",
+    "name": "Diseases",
     "icon": "land-use",
     "members": [
-      "landuse/residential",
-      "landuse/industrial",
-      "landuse/commercial",
-      "landuse/retail",
-      "landuse/farm",
-      "landuse/farmyard",
-      "landuse/forest",
-      "landuse/meadow",
-      "landuse/cemetery",
-      "landuse/military"
+      "landuse/Bacterium",
+      "landuse/Mushrooms",
+      "landuse/Virus",
+      "landuse/Pathogenic",
+      "landuse/Nematode"
+    ],
+    "expirations": [
+      "1h",
+      "12h",
+      "24h",
+      "48h"
     ],
     "style": {
       "stroke": "rgba(140, 208, 95, 0.9)",
@@ -127,13 +127,22 @@
   },
   "category-water-area": {
     "geometry": "area",
-    "name": "Water",
+    "name": "Weather",
     "icon": "water",
     "members": [
-      "natural/water/lake",
-      "natural/water/pond",
-      "natural/water/reservoir",
-      "natural/water"
+      "natural/Sunny",
+      "natural/Rain",
+      "natural/Hail",
+      "natural/Storm",
+      "natural/Cloudy",
+      "natural/Windy",
+      "natural/Snow"
+    ],
+    "expirations": [
+      "1h",
+      "12h",
+      "24h",
+      "48h"
     ],
     "style": {
       "stroke": "rgba(119, 211, 222, 0.9)",

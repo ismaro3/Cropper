@@ -4592,16 +4592,16 @@
         },
         "name": "Landuse"
     },
-    "landuse/allotments": {
+    "landuse/Pathogenic": {
         "geometry": [
             "point",
             "area"
         ],
         "tags": {
-            "landuse": "allotments"
+            "landuse": "Pathogenic"
         },
         "terms": [],
-        "name": "Allotments"
+        "name": "Pathogenic"
     },
     "landuse/basin": {
         "geometry": [
@@ -4614,48 +4614,40 @@
         "terms": [],
         "name": "Basin"
     },
-    "landuse/cemetery": {
+    "landuse/Virus": {
         "icon": "cemetery",
-        "fields": [
-            "religion",
-            "denomination"
-        ],
         "geometry": [
             "point",
             "vertex",
             "area"
         ],
         "tags": {
-            "landuse": "cemetery"
+            "landuse": "Virus"
         },
         "terms": [],
-        "name": "Cemetery"
+        "name": "Virus"
     },
-    "landuse/churchyard": {
-        "fields": [
-            "religion",
-            "denomination"
-        ],
+    "landuse/Mushrooms": {
         "geometry": [
             "area"
         ],
         "tags": {
-            "landuse": "churchyard"
+            "landuse": "Mushrooms"
         },
         "terms": [],
-        "name": "Churchyard"
+        "name": "Mushrooms"
     },
-    "landuse/commercial": {
+    "landuse/Bacterium": {
         "icon": "commercial",
         "geometry": [
             "point",
             "area"
         ],
         "tags": {
-            "landuse": "commercial"
+            "landuse": "Bacterium"
         },
         "terms": [],
-        "name": "Commercial"
+        "name": "Bacterium"
     },
     "landuse/construction": {
         "fields": [
@@ -4674,7 +4666,7 @@
     },
     "landuse/farm": {
         "fields": [
-            "crop"
+            "Diseases"
         ],
         "geometry": [
             "point",
@@ -4687,25 +4679,25 @@
         "name": "Farm",
         "icon": "farm"
     },
-    "landuse/farmland": {
+    "landuse/Nematode": {
         "fields": [
-            "crop"
+            "diseases"
         ],
         "geometry": [
             "point",
             "area"
         ],
         "tags": {
-            "landuse": "farmland"
+            "landuse": "Nematode"
         },
         "terms": [],
-        "name": "Farmland",
+        "name": "Nematode",
         "icon": "farm",
         "searchable": false
     },
     "landuse/farmyard": {
         "fields": [
-            "crop"
+            "diseases"
         ],
         "geometry": [
             "point",
@@ -5664,22 +5656,83 @@
         "icon": "water",
         "name": "Water"
     },
-    "natural/water/lake": {
+    "natural/Rain": {
         "geometry": [
             "area"
         ],
         "tags": {
-            "natural": "water",
-            "water": "lake"
+            "water": "Rain"
         },
-        "terms": [
-            "lakelet",
-            "loch",
-            "mere"
-        ],
+        "terms": [],
         "icon": "water",
-        "name": "Lake"
+        "name": "Rain"
     },
+  "natural/Sunny": {
+    "geometry": [
+      "area"
+    ],
+    "tags": {
+      "Weather": "Sunny"
+    },
+    "terms": [],
+    "icon": "water",
+    "name": "Sunny"
+  },
+  "natural/Windy": {
+    "geometry": [
+      "area"
+    ],
+    "tags": {
+      "water": "Windy"
+    },
+    "terms": [],
+    "icon": "water",
+    "name": "Windy"
+  },
+  "natural/Storm": {
+    "geometry": [
+      "area"
+    ],
+    "tags": {
+      "water": "Storm"
+    },
+    "terms": [],
+    "icon": "water",
+    "name": "Storm"
+  },
+  "natural/Snow": {
+    "geometry": [
+      "area"
+    ],
+    "tags": {
+      "water": "Snow"
+    },
+    "terms": [],
+    "icon": "water",
+    "name": "Snow"
+  },
+  "natural/Hail": {
+    "geometry": [
+      "area"
+    ],
+    "tags": {
+      "water": "Hail"
+    },
+    "terms": [],
+    "icon": "water",
+    "name": "Hail"
+  },
+  "natural/Cloudy": {
+    "geometry": [
+      "area"
+    ],
+    "tags": {
+      "water": "Cloudy"
+    },
+    "terms": [],
+    "icon": "water",
+    "name": "Cloudy"
+  },
     "natural/water/pond": {
         "geometry": [
             "area"
