@@ -38,8 +38,7 @@ Developed for Zaragoza Space App 2015 by Daniel Barea, Diego Ceresuela, Ismael R
 **David Vergara**
 - <https://github.com/davidvergara>
 
-
-- ###Technologies
+##Technologies
 
 * [node.js]
 * [Leaflet] + [Leaflet.draw]
