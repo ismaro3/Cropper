@@ -14,9 +14,32 @@ Other interesant features are:
 * real time advanced chat between clients of the application
 
 Developed for Zaragoza Space App 2015 by Daniel Barea, Diego Ceresuela, Ismael Rodríguez, Sergio Soro and David Vergara.
+## Creators
 
+**Daniel Barea**
 
-###Technologies
+- <https://twitter.com/dbarelop>
+- <https://github.com/dbarelop>
+
+**Diego Ceresuela**
+
+- <https://twitter.com/dicearr>
+- <https://github.com/dicearr>
+
+**Ismael Rodríguez**
+
+- <https://twitter.com/ismaro9>
+- <https://github.com/ismaro3>
+
+**Sergio Soro**
+- <https://twitter.com/teruyi>
+- <https://github.com/teruyi>
+
+**David Vergara**
+- <https://twitter.com/davidlodares>
+- <https://github.com/davidvergara>
+- 
+- ###Technologies
 
 * [node.js]
 * [Leaflet] + [Leaflet.draw]
