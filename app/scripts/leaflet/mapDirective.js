@@ -32,17 +32,70 @@ angular.module('CollaborativeMap')
         ApiService.getFeaturesOboe(mapId)
           .node('rows.*', function(row) {
 
-            // This callback will be called everytime a new object is
-            // found in the foods array.
-            MapHandler.addGeoJSONFeature(map, {
-              'feature': row.doc,
-              'fid': row.doc._id
-            }, drawnItems);
+                console.log("Cargando row " + row);
+                console.log(row.doc);
+
+                 var  currentTime = new Date().getTime().toString().substr(0,12);
+
+
+
+                //Buscamos la propiedad
+                var expirationTime = row.doc.properties.expiration;
+
+
+
+                var creationTime = row.doc._id.toString().substr(0,12);
+
+
+                //La resta es milisegundos
+                var dif = parseInt(currentTime) - parseInt(creationTime);
+
+
+                console.log("time since creation: " + dif);
+
+                if(expirationTime!=undefined){
+                    console.log("hola0");
+                    expirationTime = expirationTime.substring(0, expirationTime.length - 1);
+                    console.log("hola");
+
+                    expirationTime = expirationTime*60*60*1000;
+                    console.log("hola2");
+                    //Tenemos el expirationTime en milisegundos
+                    if  (dif > expirationTime){
+                        //Borramos
+                        //remove the layer from the map
+                        $scope.selectedFeature = row.doc;
+                        deleteFeature();
+                        console.log("ha expirado");
+                    }
+                    else{
+                        console.log("no ha expirado");
+                        // This callback will be called everytime a new object is
+                        // found in the foods array.
+                        MapHandler.addGeoJSONFeature(map, {
+                            'feature': row.doc,
+                            'fid': row.doc._id
+                        }, drawnItems);
+                    }
+
+                }
+                else{
+
+                    // This callback will be called everytime a new object is
+                    // found in the foods array.
+                    MapHandler.addGeoJSONFeature(map, {
+                        'feature': row.doc,
+                        'fid': row.doc._id
+                    }, drawnItems);
+                }
+
           })
           .done(function() {
             removeLoading();
           });
       }
+
+
 
       /**
        * Creates a loading div
@@ -74,7 +127,7 @@ angular.module('CollaborativeMap')
           mapId: '=mapid'
         },
         // transclude: true,
-        link: function postLink($scope) {
+        link: function postLink($scope,$rootScope) {
 
           //expose map for debugging purposes
           //var map = window._map = L.mapbox.map('map', 'dnns.h8dkb1bh')

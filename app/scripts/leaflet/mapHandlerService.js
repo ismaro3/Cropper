@@ -165,12 +165,13 @@ angular.module('CollaborativeMap')
           //Create a delete handler
           var delLayer = map._layers[editFeatureId];
           var deleteHandler = new L.EditToolbar.Delete(map, {
-            featureGroup: L.featureGroup([delLayer]),
+            featureGroup: L.featureGroup([delLayer])
           });
           deleteHandler.enable();
           deleteHandler._removeLayer(delLayer);
           deleteHandler.save();
           deleteHandler.disable();
+
 
           //remove the layer from the map
           this.removeLayer(map, {
