@@ -12,6 +12,7 @@ process.on('uncaughtException', function (err) {
  * Main application file
  */
 
+
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -41,4 +42,4 @@ app.use(raven.middleware.express('https://db4f99d9238948be9d1e2fa85b34084a:6d031
 
 
 // Expose app
-exports = module.exports = app;
+var exports = module.exports = app;
