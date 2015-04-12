@@ -1,20 +1,19 @@
-Ethermap
+Cropper
 =========
 
-Ethermap is a real-time collaborative map editor allowing:
-* synchronization of geoobjects between all clients
-* visual highlights of changes creating user-awareness
-* watching other users or show their current workarea
-* basic feature version control (browse older revisions and revert changes)
-* communicating about specific features within the chat
+Cropper is a real-time collaborative social-network made for farmers who want to alert
+to other farmers of dangeours events, like floods, storms, plagues, diseases...
 
+Everyone can submit information of dangeours events associated with a place, and attach information specific to the type of event, like precipitation quantity, custom properties or a photo.
 
-[How does it work?](How_does_it_work.md) shortly explains the overall concept.
+The most interesting feature is that farmers can subscribe to zones. They can define notified "zones"; in the case someone posts an event in that zone, an email will be send to the farmer, describing the disease.
 
-For a [demo](http://giv-wilhelm.uni-muenster.de) (desktop only), open the website with several browsers log into the same map id with different user names. Or check out the [video](https://www.youtube.com/watch?v=ByRp-g3egLk).
+Other interesant features are:
+* real time synchronization of events between all clients.
+* visual hightlights of changes produced by other users.
+* real time advanced chat between clients of the application
 
-
-The application has been built as part of my master thesis at the ifgi (Institute for Geoinformatics, WWU Münster).
+Developed for Zaragoza Space App 2015 by Daniel Barea, Diego Ceresuela, Ismael Rodríguez, Sergio Soro and David Vergara.
 
 
 ###Technologies
