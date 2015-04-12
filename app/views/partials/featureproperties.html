@@ -15,7 +15,7 @@
 
             </span>
 
-            Last edited by: {{selectedFeature.user}}
+
       <span ng-hide="$parent.is_subscription">
           <br/>
            <span><br/><strong>Category:</strong></span>
@@ -37,7 +37,7 @@
  <span><strong>Expiration time:</strong></span>
         <select id="expirationSelect" ng-model="$parent.selectedExpiration"
                 ng-options="val for val in getExpirations() " ng-change="expirationChanged()">
-            <option value="" selected>{{default}}</option>
+            <option value="" disalbled selected>Select an expiration time</option>
         </select>
 
         <br><br>
@@ -70,6 +70,7 @@
             <br>
             </span>
             <span ng-show="is_subscription">
+                  Insert your e-mail to receive notifications of this zone
             <input id="e-mail" type="text" ng-model="$parent.selectedMail">
             <input type="button" class="btn btn-default" ng-click="newEmail()" value="Save">
             </span>

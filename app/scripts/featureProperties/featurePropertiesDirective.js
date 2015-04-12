@@ -199,7 +199,7 @@ angular.module('CollaborativeMap')
                         MapHandler.removeEditHandler();
                         hideStopEditingBtn();
                     };
-
+7
                     /**
                      * Deletes the currently selected feature
                      */
@@ -508,6 +508,9 @@ angular.module('CollaborativeMap')
                             $scope.selectedFeature.feature.properties.category = selCategory;
                             setStyleFromCategory(selCategory);
                             MapHandler.updateOnlyProperties($scope.selectedFeature);
+                            //if(selCategory=Cyclone){
+                              //  console.log("blurulu");
+                            //}
 
                             //Set to scope array
                             setPresetsInScope(selCategory);
@@ -599,6 +602,14 @@ angular.module('CollaborativeMap')
                             var oldPreset = $scope.selectedFeature.feature.properties.preset;
                             $scope.selectedFeature.feature.properties.preset = getSelectedPresetName($scope.selectedPreset);
                             MapHandler.updateOnlyProperties($scope.selectedFeature);
+                            if(getSelectedPresetName($scope.selectedPreset)=="Cyclone"){
+                                console.log("blurulu");
+                                console.log(getSelectedPresetName($scope.selectedPreset));
+                            }
+                            else{
+                                console.log("jujujuju");
+                                console.log(getSelectedPresetName($scope.selectedPreset));
+                            }
 
                             members = $scope.presets[$scope.selectedPreset].fields || [];
 

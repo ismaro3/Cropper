@@ -1995,10 +1995,7 @@
     },
     "building/Plague": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
+
       "geometry": [
         "point",
         "vertex",
@@ -2011,10 +2008,7 @@
     },
     "building/Tornado": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
+
       "geometry": [
         "point",
         "vertex",
@@ -2028,10 +2022,7 @@
 
     "building/Cyclone": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
+
       "geometry": [
         "point",
         "vertex",
@@ -2044,10 +2035,6 @@
     },
     "building/Flood": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
       "geometry": [
         "point",
         "vertex",
@@ -2060,10 +2047,7 @@
     },
     "building/Avalanche": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
+
       "geometry": [
         "point",
         "vertex",
@@ -2076,10 +2060,6 @@
     },
     "building/Snowfal": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
       "geometry": [
         "point",
         "vertex",
@@ -2092,10 +2072,7 @@
     },
     "building/Rise": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
+
       "geometry": [
         "point",
         "vertex",
@@ -2108,10 +2085,7 @@
     },
     "building/Hail": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
+
       "geometry": [
         "point",
         "vertex",
@@ -2124,10 +2098,7 @@
     },
     "building/Drought": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
+
       "geometry": [
         "point",
         "vertex",
@@ -2140,10 +2111,7 @@
     },
     "building/Blizzard": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
+
       "geometry": [
         "point",
         "vertex",
@@ -2156,10 +2124,7 @@
     },
     "building/Electric_strom": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
+
       "geometry": [
         "point",
         "vertex",
@@ -2173,10 +2138,6 @@
 
     "building/Sandstorm": {
       "icon": "commercial",
-      "fields": [
-        "address",
-        "levels"
-      ],
       "geometry": [
         "point",
         "vertex",
@@ -2564,10 +2525,6 @@
     },
     "building/shed": {
         "icon": "building",
-        "fields": [
-            "address",
-            "levels"
-        ],
         "geometry": [
             "point",
             "vertex",
