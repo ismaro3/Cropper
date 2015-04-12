@@ -36,9 +36,9 @@ Developed for Zaragoza Space App 2015 by Daniel Barea, Diego Ceresuela, Ismael R
 - <https://github.com/teruyi>
 
 **David Vergara**
-- <https://twitter.com/davidlodares>
 - <https://github.com/davidvergara>
-- 
+
+
 - ###Technologies
 
 * [node.js]
