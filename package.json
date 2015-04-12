@@ -63,7 +63,9 @@
     "grunt-jsdoc": "~0.5.4",
     "jsdoc": "~3.3.0-alpha5",
     "grunt-sloc": "^0.5.2",
-    "fs":"^0.0.2"
+    "fs":"^0.0.2",
+    "http":"0.0.0",
+    "sat":"0.5.0"
 
   },
   "engines": {

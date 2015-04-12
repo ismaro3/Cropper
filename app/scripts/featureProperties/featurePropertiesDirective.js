@@ -10,9 +10,12 @@
  *
  * @author Dennis Wilhelm
  */
+
+
+
 angular.module('CollaborativeMap')
-    .directive('featureproperties', ['$compile', 'MapHandler', 'ApiService',
-        function ($compile, MapHandler, ApiService) {
+    .directive('featureproperties', ['$compile', 'MapHandler', 'ApiService' , '$http',
+        function ($compile, MapHandler, ApiService, $http) {
 
 
             return {
@@ -20,6 +23,20 @@ angular.module('CollaborativeMap')
                 templateUrl: 'partials/featureproperties',
                 replace: true,
                 link: function postLink($scope) {
+
+                    $scope.uploadFile = function(files) {
+
+
+                        var fd = new FormData();
+                        //Take the first selected file
+                        fd.append("file", files[0]);
+
+                        $http.post("upload/", files[0], {
+                            headers: {'Content-Type': 'image/png' },
+                            transformRequest: angular.identity
+                        }).success(console.log("ok")).error( console.log("mal") );
+
+                    };
 
 
                     $scope.selectedExpiration = '1h';
@@ -105,6 +122,7 @@ angular.module('CollaborativeMap')
                             console.log('is-not');
                             $scope.is_subscription="false";
                         }
+
 
 
 
@@ -278,6 +296,25 @@ angular.module('CollaborativeMap')
                         }
                     };
 
+                    $scope.loadImage = function(){
+                        var i = -1;
+                        var found = false;
+                        var result = "";
+                        $scope.selectedFeature.properties.forEach(function (aux) {
+                            i++;
+
+
+                            if(aux.key  == "image"){
+                                result = $scope.selectedFeature.properties[i].value;
+
+                            }
+
+                        });
+                        console.log("obtenida imagen: " + result);
+                        return result;
+                    };
+
+
                     $scope.newEmail = function() {
                         var i = -1;
                         var found = false;
@@ -301,6 +338,28 @@ angular.module('CollaborativeMap')
                         $scope.propertyChanged();
                     }
 
+                    $scope.newImage = function() {
+                        var i = -1;
+                        var found = false;
+                        $scope.selectedFeature.properties.forEach(function (aux) {
+                            i++;
+
+                            console.log(i);
+                            if(aux.key  == "image"){
+                                $scope.selectedFeature.properties[i].value = $scope.selectedImage;
+                                found = true;
+                            }
+
+                        });
+                        if(found==false){
+                            $scope.selectedFeature.properties.push({
+                                'key':'image',
+                                'value' : $scope.selectedImage
+                            });
+                        }
+
+                        $scope.propertyChanged();
+                    }
                     /**
                      * Adds a new property to the feature.
                      * @param {String} type the property type
@@ -419,6 +478,8 @@ angular.module('CollaborativeMap')
                         }
                     }
 
+
+
                     /**
                      * Remove selected category and preset from the scope
                      */
@@ -455,6 +516,7 @@ angular.module('CollaborativeMap')
                         $scope.fields = [];
                         $scope.selectedExpiration = "";
                         $scope.selectedMail = "";
+                        $scope.selectedImage = "";
                         $scope.selectedPreset = undefined;
                         var selCategory = $scope.selectedCategory;
 
@@ -609,4 +671,5 @@ angular.module('CollaborativeMap')
                 }
             };
         }
-    ]);
+    ])
+

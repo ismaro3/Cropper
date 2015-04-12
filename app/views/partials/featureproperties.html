@@ -7,6 +7,14 @@
                 <span class="glyphicon glyphicon-trash"></span> Delete
             </button>
             <br>
+            <span ng-hide="is_subscription">
+
+                <span ng-hide="$parent.loadImage() == undefined">
+<img src="{{ $parent.loadImage() }}" style="max-width: 300px;">
+                    </span>
+
+            </span>
+
             Last edited by: {{selectedFeature.user}}
       <span ng-hide="$parent.is_subscription">
       <select ng-model="$parent.selectedCategory" id="categorySelect" ng-change="selectPresets()">
@@ -30,15 +38,13 @@
 
         <br><br>
 
-        <input id="foto" ng-model="$parent.selectedExpiration" value="Insert a photography">
-          </input>
 
+
+          <!--<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>-->
           <br>
-        <form method="post" enctype="multipart/form-data" action="/file-upload">
-            <input type="file" name="image">
-            <input type="submit">
-        </form>
-        <br>
+
+          </form>
+          <br>
 
       </span>
 
@@ -54,15 +60,20 @@
             </div>
             <span ng-hide="is_subscription">
             <div ng-hide="selectedFeature.properties.length">This feature has no properties yet.</div>
+                 <input type="button" class="btn btn-default" ng-click="newImage()" value="Add Image URL">
+                <br/>
             <input type="button" class="btn btn-default" ng-click="addNewProperty($event)" value="Add new Property">
             <br>
             </span>
             <span ng-show="is_subscription">
-            <input id="e-mail" type="text" ng-model="$parent.selectedMail" >
+            <input id="e-mail" type="text" ng-model="$parent.selectedMail">
             <input type="button" class="btn btn-default" ng-click="newEmail()" value="Save">
             </span>
+
+
             <input type="button" class="btn btn-default stopEditBtn orangeBackground" id="stopEditBtn"
                    ng-click="cancelEditMode()" value="Stop Editing">
+
 
         </div>
         <div ng-if="!selectedFeature">
