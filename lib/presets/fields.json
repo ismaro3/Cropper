@@ -512,6 +512,11 @@
     "label": "Levels",
     "placeholder": "2, 4, 6..."
   },
+  "image": {
+    "key" : "image",
+    "type" : "text",
+    "label" : "Image URL"
+  },
   "lit": {
     "key": "lit",
     "type": "check",

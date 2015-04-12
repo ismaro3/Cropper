@@ -1,8 +1,8 @@
 <div style="margin-left: 3px">
     <div class="featureProperties">
         <div ng-if="selectedFeature">
-            <input type="button" class="btn btn-default" ng-click="showFeatureHistory(selectedFeature.fid)"
-                   value="Show Changes">
+            <!--<input type="button" class="btn btn-default" ng-click="showFeatureHistory(selectedFeature.fid)"
+                   value="Show Changes">-->
             <button type="button" class="btn btn-default" style="float: right" ng-click="deleteFeature()">
                 <span class="glyphicon glyphicon-trash"></span> Delete
             </button>
@@ -17,12 +17,16 @@
 
             Last edited by: {{selectedFeature.user}}
       <span ng-hide="$parent.is_subscription">
+          <br/>
+           <span><br/><strong>Category:</strong></span>
       <select ng-model="$parent.selectedCategory" id="categorySelect" ng-change="selectPresets()">
+
           <option value="" disabled selected>Select a category</option>
           <option value="{{key}}" ng-repeat="(key, value) in categories">{{categories[key].name}}</option>
       </select>
       <br>
       <span ng-show="presets">
+           <span><strong>Subcategory:</strong></span>
         <select id="presetSelect" ng-model="$parent.selectedPreset" ng-change="selectFields()">
             <option value="" disabled selected>Select a sub category</option>
             <option value="{{key}}" ng-repeat="(key, value) in presets">{{presets[key].name}}</option>
@@ -30,7 +34,7 @@
         <br>
       </span>
 
-
+ <span><strong>Expiration time:</strong></span>
         <select id="expirationSelect" ng-model="$parent.selectedExpiration"
                 ng-options="val for val in getExpirations() " ng-change="expirationChanged()">
             <option value="" selected>{{default}}</option>

@@ -493,7 +493,7 @@ select {
 .featureProperties {
   position: absolute;
   overflow-y: auto;
-  bottom: 210px;
+  bottom: 0px;
   top: 10px;
 }
 .mapLoading {

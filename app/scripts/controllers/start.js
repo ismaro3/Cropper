@@ -22,7 +22,7 @@ angular.module('CollaborativeMap')
 
       function startMap() {
         //a+  as couchdb db names can't start with a number
-        var mapId = $scope.mapIdInput || 'a' + Utils.createId();
+        var mapId = "test";
         $rootScope.userName = $scope.userInput;
         saveName();
         $location.path('/map/' + mapId);
