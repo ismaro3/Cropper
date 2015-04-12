@@ -1,15 +1,22 @@
 {
-  "category-building": {
+  "category-catastrophe": {
     "geometry": "area",
-    "name": "Building",
+    "name": "Catastrophe",
     "icon": "building",
     "members": [
-      "building/house",
-      "building/apartments",
-      "building/commercial",
-      "building/industrial",
-      "building/residential",
-      "building"
+      "building/plague",
+      "building/tornado",
+      "building/cyclone",
+      "building/flood",
+      "building/avalanche",
+      "building/snowfal",
+      "building/rise",
+      "building/hail",
+      "building/drought",
+      "building/blizzard",
+      "building/electric_strom",
+      "building/Sandstorm",
+      "building/"
     ],
     "expirations": [
       "1h",
