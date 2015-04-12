@@ -137,15 +137,6 @@ angular.module('CollaborativeMap')
                   var longitude = position.coords.longitude;
                   map.panTo([latitude, longitude]);
 
-                  var req = {
-                      method: 'GET',
-                      url: 'api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude,
-                      headers: {
-                          'x-api-key': '89b59e4d7d07894243b5acd24e7f18a3'
-                      }
-                  }
-
-                  $http(req).success(function(){$scope.temp}).error(function(){});
               });
           }
           var map = window._map = L.mapbox.map('map').setView([51.95577098349905, 7.635455131530762], 14);
