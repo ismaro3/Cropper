@@ -10,9 +10,6 @@
  *
  * @author Dennis Wilhelm
  */
-
-
-
 angular.module('CollaborativeMap')
     .directive('featureproperties', ['$compile', 'MapHandler', 'ApiService' , '$http',
         function ($compile, MapHandler, ApiService, $http) {
@@ -23,20 +20,6 @@ angular.module('CollaborativeMap')
                 templateUrl: 'partials/featureproperties',
                 replace: true,
                 link: function postLink($scope) {
-
-                    $scope.uploadFile = function(files) {
-
-
-                        var fd = new FormData();
-                        //Take the first selected file
-                        fd.append("file", files[0]);
-
-                        $http.post("upload/", files[0], {
-                            headers: {'Content-Type': 'image/png' },
-                            transformRequest: angular.identity
-                        }).success(console.log("ok")).error( console.log("mal") );
-
-                    };
 
 
                     $scope.selectedExpiration = '1h';
@@ -122,7 +105,6 @@ angular.module('CollaborativeMap')
                             console.log('is-not');
                             $scope.is_subscription="false";
                         }
-
 
 
 
@@ -478,8 +460,6 @@ angular.module('CollaborativeMap')
                         }
                     }
 
-
-
                     /**
                      * Remove selected category and preset from the scope
                      */
@@ -671,5 +651,4 @@ angular.module('CollaborativeMap')
                 }
             };
         }
-    ])
-
+    ]);
