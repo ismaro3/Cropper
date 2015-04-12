@@ -26,16 +26,6 @@ angular.module('CollaborativeMap')
        */
       function eventToMessage(event, type) {
         //jshint camelcase: false
-            console.log(event.layer.toGeoJSON());
-          if (event.layer._latlng &&
-          event.layer._latlng[0] && event.layer._latlng[1] &&
-          event.layer._latlng[2] && event.layer._latlng[3] &&
-          event.layer._latlng[0].long == event.layer._latlng[1].long &&
-          event.layer._latlng[1].lat == event.layer._latlng[2].lat &&
-          event.layer._latlng[3].lat == event.layer._latlng[0].lat &&
-          event.layer._latlng[2].long == event.layer._latlng[3].long) {
-                $scope.is_subscription="false";
-          }
             return {
                 'action': type,
                 'feature': event.layer.toGeoJSON(),

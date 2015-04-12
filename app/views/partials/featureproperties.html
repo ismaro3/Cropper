@@ -8,7 +8,7 @@
             </button>
             <br>
             Last edited by: {{selectedFeature.user}}
-      <span ng-show="is_subscription">
+      <span ng-hide="$parent.is_subscription">
       <select ng-model="$parent.selectedCategory" id="categorySelect" ng-change="selectPresets()">
           <option value="" disabled selected>Select a category</option>
           <option value="{{key}}" ng-repeat="(key, value) in categories">{{categories[key].name}}</option>
@@ -52,12 +52,12 @@
           </span>
                 </div>
             </div>
-            <span ng-show="is_subscription">
+            <span ng-hide="is_subscription">
             <div ng-hide="selectedFeature.properties.length">This feature has no properties yet.</div>
             <input type="button" class="btn btn-default" ng-click="addNewProperty($event)" value="Add new Property">
             <br>
             </span>
-            <span ng-hidde="is_subscription">
+            <span ng-show="is_subscription">
             <input id="e-mail" type="text" ng-model="$parent.selectedMail" >
             <input type="button" class="btn btn-default" ng-click="newEmail()" value="Save">
             </span>

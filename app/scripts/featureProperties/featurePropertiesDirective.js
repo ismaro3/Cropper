@@ -91,6 +91,22 @@ angular.module('CollaborativeMap')
                             $scope.default = '1h';
                         }
 
+                        console.log(feature);
+                        if (feature._latlngs &&
+                            feature._latlngs[0] && feature._latlngs[1] &&
+                            feature._latlngs[2] && feature._latlngs[3] &&
+                            feature._latlngs[0].long == feature._latlngs[1].long &&
+                            feature._latlngs[1].lat == feature._latlngs[2].lat &&
+                            feature._latlngs[3].lat == feature._latlngs[0].lat &&
+                            feature._latlngs[2].long == feature._latlngs[3].long) {
+                            console.log('is');
+                            $scope.is_subscription="true";
+                        } else {
+                            console.log('is-not');
+                            $scope.is_subscription="false";
+                        }
+
+
 
                         //Preselect the selectboxes if a category/preset is available
                         if (tmpGeoJSON.properties && tmpGeoJSON.properties.category) {
@@ -269,7 +285,7 @@ angular.module('CollaborativeMap')
                             i++;
 
                             console.log(i);
-                            if(aux.key  == "e-mail"){
+                            if(aux.key  == "email"){
                                 $scope.selectedFeature.properties[i].value = $scope.selectedMail;
                                 found = true;
                             }
@@ -277,7 +293,7 @@ angular.module('CollaborativeMap')
                         });
                         if(found==false){
                             $scope.selectedFeature.properties.push({
-                                'key':'e-mail',
+                                'key':'email',
                                 'value' : $scope.selectedMail
                             });
                         }
