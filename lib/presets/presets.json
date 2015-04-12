@@ -2058,7 +2058,7 @@
       },
       "name": "Avalanche"
     },
-    "building/Snowfal": {
+    "building/Snowfall": {
       "icon": "commercial",
       "geometry": [
         "point",
@@ -2066,9 +2066,9 @@
         "area"
       ],
       "tags": {
-        "building": "Snowfal"
+        "building": "Snowfall"
       },
-      "name": "Snowfal"
+      "name": "Snowfall"
     },
     "building/Rise": {
       "icon": "commercial",
@@ -2122,7 +2122,7 @@
       },
       "name": "Blizzard"
     },
-    "building/Electric_strom": {
+    "building/Electric_storm": {
       "icon": "commercial",
 
       "geometry": [
@@ -2131,9 +2131,9 @@
         "area"
       ],
       "tags": {
-        "building": "Electric_strom"
+        "building": "Electric_storm"
       },
-      "name": "Electric_strom"
+      "name": "Electric_storm"
     },
 
     "building/Sandstorm": {
