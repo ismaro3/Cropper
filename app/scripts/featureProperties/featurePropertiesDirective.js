@@ -52,7 +52,6 @@ angular.module('CollaborativeMap')
 
                         //jshint camelcase:false
                         activateToolbox();
-                        console.log(feature);
 
                         cleanSelection();
                         var lastEditedBy;
@@ -91,7 +90,6 @@ angular.module('CollaborativeMap')
                             $scope.default = '1h';
                         }
 
-                        console.log(feature);
                         if (feature._latlngs &&
                             feature._latlngs[0] && feature._latlngs[1] &&
                             feature._latlngs[2] && feature._latlngs[3] &&
@@ -102,11 +100,12 @@ angular.module('CollaborativeMap')
                             console.log('is');
                             $scope.is_subscription="true";
                         } else {
-                            console.log('is-not');
+                            // TODO: solucionar
+                            //var trigger = require('./trigger.js');
+                            //console.log("Ejecutando trigger...");
+                            //trigger.triggerNotifications(mapId);
                             $scope.is_subscription="false";
                         }
-
-
 
                         //Preselect the selectboxes if a category/preset is available
                         if (tmpGeoJSON.properties && tmpGeoJSON.properties.category) {

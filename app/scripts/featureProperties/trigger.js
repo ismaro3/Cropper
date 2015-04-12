@@ -1,11 +1,11 @@
-var db = require('./dbHandler.js');
+var db = require('./../../../lib/dbHandler.js');
 var SAT = require('sat');
 
 function notify(user) {
     console.log("--> Cuidado " + user + "!!");
 }
 
-exports.triggerNotifications = function(mapId) {
+module.exports.triggerNotifications = function(mapId) {
     var V = SAT.Vector;
     var P = SAT.Polygon;
     var ref = new V(0, 0);
