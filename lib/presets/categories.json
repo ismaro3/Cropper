@@ -19,7 +19,7 @@
       "building/"
     ],
     "expirations": [
-      "1",
+      "1h",
       "12h",
       "24h",
       "48h"
