@@ -21,7 +21,10 @@ angular.module('CollaborativeMap')
                 replace: true,
                 link: function postLink($scope) {
 
+
                     $scope.selectedExpiration = '1h';
+
+
                     /**
                      * Toggles the visibility of the featureproprties view
                      */
@@ -78,6 +81,7 @@ angular.module('CollaborativeMap')
                                 });
                             }
                         }
+
 
                         // MODIFIED
                         $scope.selectedExpiration = tmpGeoJSON.properties.expiration;
@@ -258,6 +262,29 @@ angular.module('CollaborativeMap')
                         }
                     };
 
+                    $scope.newEmail = function() {
+                        var i = -1;
+                        var found = false;
+                        $scope.selectedFeature.properties.forEach(function (aux) {
+                            i++;
+
+                            console.log(i);
+                            if(aux.key  == "e-mail"){
+                                $scope.selectedFeature.properties[i].value = $scope.selectedMail;
+                                found = true;
+                            }
+
+                        });
+                        if(found==false){
+                            $scope.selectedFeature.properties.push({
+                                'key':'e-mail',
+                                'value' : $scope.selectedMail
+                            });
+                        }
+
+                        $scope.propertyChanged();
+                    }
+
                     /**
                      * Adds a new property to the feature.
                      * @param {String} type the property type
@@ -296,6 +323,7 @@ angular.module('CollaborativeMap')
                         }
                         $scope.hideNewProperty = !$scope.hideNewProperty;
                     };
+
 
                     /**
                      * Show the button to stop the edit mode
@@ -410,6 +438,7 @@ angular.module('CollaborativeMap')
                         $scope.cancelEditMode();
                         $scope.fields = [];
                         $scope.selectedExpiration = "";
+                        $scope.selectedMail = "";
                         $scope.selectedPreset = undefined;
                         var selCategory = $scope.selectedCategory;
 

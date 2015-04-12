@@ -31,13 +31,13 @@ angular.module('CollaborativeMap')
         showLoading();
         ApiService.getFeaturesOboe(mapId)
           .node('rows.*', function(row) {
-
             // This callback will be called everytime a new object is
             // found in the foods array.
-            MapHandler.addGeoJSONFeature(map, {
-              'feature': row.doc,
-              'fid': row.doc._id
-            }, drawnItems);
+
+                    MapHandler.addGeoJSONFeature(map, {
+                        'feature': row.doc,
+                        'fid': row.doc._id
+                    }, drawnItems);
           })
           .done(function() {
             removeLoading();
@@ -142,15 +142,22 @@ angular.module('CollaborativeMap')
           var drawNotificationControl = window._drawControl = new L.Control.Draw({
               edit: false,
               draw: {
-                  circle: {},
-                  rectangle: false,
+                  circle: false,
+                  rectangle: {
+                      shapeOptions: {
+                          color: '#FE2E2E',
+                          fillOpacity: 0.5,
+                          weight: 2,
+                          opacity: 1
+                      }
+                  },
                   marker: false,
                   polyline: false,
                   polygon: false
               }
           });
           map.addControl(drawNotificationControl);
-          L.drawLocal.draw.toolbar.buttons.circle = 'Add a notification area';
+          L.drawLocal.draw.toolbar.buttons.rectangle = 'Add a notification area';
 
           L.drawLocal.edit.handlers.edit.tooltip.subtext = 'Click "Stop Editing" to stop the edit mode';
 
