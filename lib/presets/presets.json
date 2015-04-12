@@ -1993,7 +1993,7 @@
         },
         "name": "Apartments"
     },
-    "building/plague": {
+    "building/Plague": {
       "icon": "commercial",
       "fields": [
         "address",
@@ -2005,11 +2005,11 @@
         "area"
       ],
       "tags": {
-        "building": "plague"
+        "building": "Plague"
       },
-      "name": "plague"
+      "name": "Plague"
     },
-    "building/tornado": {
+    "building/Tornado": {
       "icon": "commercial",
       "fields": [
         "address",
@@ -2021,12 +2021,12 @@
         "area"
       ],
       "tags": {
-        "building": "tornado"
+        "building": "Tornado"
       },
-      "name": "tornado"
+      "name": "Tornado"
     },
 
-    "building/cyclone": {
+    "building/Cyclone": {
       "icon": "commercial",
       "fields": [
         "address",
@@ -2038,11 +2038,11 @@
         "area"
       ],
       "tags": {
-        "building": "cyclone"
+        "building": "Cyclone"
       },
-      "name": "cyclone"
+      "name": "Cyclone"
     },
-    "building/flood": {
+    "building/Flood": {
       "icon": "commercial",
       "fields": [
         "address",
@@ -2054,11 +2054,11 @@
         "area"
       ],
       "tags": {
-        "building": "flood"
+        "building": "Flood"
       },
-      "name": "flood"
+      "name": "Flood"
     },
-    "building/avalanche": {
+    "building/Avalanche": {
       "icon": "commercial",
       "fields": [
         "address",
@@ -2070,11 +2070,11 @@
         "area"
       ],
       "tags": {
-        "building": "avalanche"
+        "building": "Avalanche"
       },
-      "name": "avalanche"
+      "name": "Avalanche"
     },
-    "building/snowfal": {
+    "building/Snowfal": {
       "icon": "commercial",
       "fields": [
         "address",
@@ -2086,11 +2086,11 @@
         "area"
       ],
       "tags": {
-        "building": "snowfal"
+        "building": "Snowfal"
       },
-      "name": "snowfal"
+      "name": "Snowfal"
     },
-    "building/rise": {
+    "building/Rise": {
       "icon": "commercial",
       "fields": [
         "address",
@@ -2102,11 +2102,11 @@
         "area"
       ],
       "tags": {
-        "building": "rise"
+        "building": "Rise"
       },
-      "name": "rise"
+      "name": "Rise"
     },
-    "building/hail": {
+    "building/Hail": {
       "icon": "commercial",
       "fields": [
         "address",
@@ -2118,11 +2118,11 @@
         "area"
       ],
       "tags": {
-        "building": "hail"
+        "building": "Hail"
       },
-      "name": "hail"
+      "name": "Hail"
     },
-    "building/drought": {
+    "building/Drought": {
       "icon": "commercial",
       "fields": [
         "address",
@@ -2134,11 +2134,11 @@
         "area"
       ],
       "tags": {
-        "building": "drought"
+        "building": "Drought"
       },
-      "name": "drought"
+      "name": "Drought"
     },
-    "building/blizzard": {
+    "building/Blizzard": {
       "icon": "commercial",
       "fields": [
         "address",
@@ -2150,11 +2150,11 @@
         "area"
       ],
       "tags": {
-        "building": "blizzard"
+        "building": "Blizzard"
       },
-      "name": "blizzard"
+      "name": "Blizzard"
     },
-    "building/electric_strom": {
+    "building/Electric_strom": {
       "icon": "commercial",
       "fields": [
         "address",
@@ -2166,9 +2166,9 @@
         "area"
       ],
       "tags": {
-        "building": "electric_strom"
+        "building": "Electric_strom"
       },
-      "name": "electric_strom"
+      "name": "Electric_strom"
     },
 
     "building/Sandstorm": {
