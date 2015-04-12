@@ -24,7 +24,6 @@ angular.module('CollaborativeMap')
 
                     $scope.selectedExpiration = '1h';
 
-
                     /**
                      * Toggles the visibility of the featureproprties view
                      */
@@ -53,6 +52,7 @@ angular.module('CollaborativeMap')
 
                         //jshint camelcase:false
                         activateToolbox();
+                        console.log(feature);
 
                         cleanSelection();
                         var lastEditedBy;
