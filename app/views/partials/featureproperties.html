@@ -4,6 +4,7 @@
             <!--<input type="button" class="btn btn-default" ng-click="showFeatureHistory(selectedFeature.fid)"
                    value="Show Changes">-->
             <button type="button" class="btn btn-default" style="float: right" ng-click="deleteFeature()">
+
                 <span class="glyphicon glyphicon-trash"></span> Delete
             </button>
             <br>
@@ -79,6 +80,10 @@
             <input type="button" class="btn btn-default stopEditBtn orangeBackground" id="stopEditBtn"
                    ng-click="cancelEditMode()" value="Stop Editing">
 
+            <span ng-hide="is_subscription">
+            <a href="https://twitter.com/share"  target="_blank" class="btn btn-default" data-text="Crooooper" data-size="large" data-hashtags="cropper">Tweet</a>
+
+            </span>
 
         </div>
         <div ng-if="!selectedFeature">
@@ -105,7 +110,8 @@
         <div ng-repeat="editUser in editByUser">
             {{editUser}}
         </div>
-    </div>
+        </div>
+
 
 
 </div>
