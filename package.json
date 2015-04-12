@@ -19,7 +19,6 @@
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
-    "multer": "~0.1.6",
     "grunt-bower-install": "~0.7.0",
     "grunt-concurrent": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
@@ -62,9 +61,7 @@
     "karma-ng-html2js-preprocessor": "~0.1.0",
     "grunt-jsdoc": "~0.5.4",
     "jsdoc": "~3.3.0-alpha5",
-    "grunt-sloc": "^0.5.2",
-    "fs":"^0.0.2"
-
+    "grunt-sloc": "^0.5.2"
   },
   "engines": {
     "node": ">=0.10.0"
