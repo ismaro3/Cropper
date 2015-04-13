@@ -31,13 +31,6 @@ require('./lib/routes')(app);
 var websocketServer = require('./lib/socketio')(app);
 websocketServer.listen(config.port);
 
-var multer = require('multer');
-app.use(multer({ dest: './uploads/' }));
-app.post('/upload-image', function(req, res) {
-    console.log('subido');
-    res.end('ok');
-});
-
 console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
 
 //error logging with raven

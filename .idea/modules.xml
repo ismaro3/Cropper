@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Ethermap.iml" filepath="$PROJECT_DIR$/.idea/Ethermap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Cropper.iml" filepath="$PROJECT_DIR$/.idea/Cropper.iml" />
     </modules>
   </component>
 </project>

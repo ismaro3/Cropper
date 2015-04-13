@@ -1,16 +1,15 @@
-var db = require('./../../../lib/dbHandler.js');
-var SAT = require('sat');
+var SAT = require('SAT');
 
 function notify(user) {
     console.log("--> Cuidado " + user + "!!");
 }
 
-module.exports.triggerNotifications = function(mapId) {
+module.exports.triggerNotifications = function(ApiService, mapId) {
     var V = SAT.Vector;
     var P = SAT.Polygon;
     var ref = new V(0, 0);
 
-    for (var feat1 in db.getFeatures(mapId)) {
+    for (var feat1 in ApiService.getFeatures(mapId)) {
         if (feat1.properties.email) {
             var collision = false;
             var vects1 = [];
@@ -19,7 +18,7 @@ module.exports.triggerNotifications = function(mapId) {
                 vects1[i++] = new V(pos1.lat, pos1.long);
             }
             var pol1 = new P(ref, vects1);
-            for (var feat2 in db.getFeatures(mapId)) {
+            for (var feat2 in ApiService.getFeatures(mapId)) {
                 if (feat1.feature.user !== feat2.feature.user && !feat2.properties.email && !collision) {
                     var vects2 = [];
                     i = 0;
