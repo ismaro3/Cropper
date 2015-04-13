@@ -125,8 +125,8 @@ angular.module('CollaborativeMap')
               attribution: '&copy; ' + mapLink + ', ' + wholink
             });
 
-          //var osm = L.tileLayer('http://{s}.tiles.mapbox.com/v3/dnns.tm2-basemap/{z}/{x}/{y}.png').addTo(map);
-          var osm = L.mapbox.tileLayer('dnns.tm2-basemap').addTo(map);
+          var osm = L.tileLayer('http://{s}.tiles.mapbox.com/v4/cropper.lnepd0j8/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY3JvcHBlciIsImEiOiJ5T2lwVjE0In0.kMLCv_sm4-KJDFIWWQl3QQ').addTo(map);
+          //var osm = L.mapbox.tileLayer('dnns.tm2-basemap').addTo(map);
 
           L.control.layers({
             'Aerial': aerial,
