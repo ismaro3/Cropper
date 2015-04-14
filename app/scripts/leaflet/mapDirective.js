@@ -119,22 +119,76 @@ angular.module('CollaborativeMap')
 
           var mapLink = '<a href="http://www.esri.com/">Esri</a>';
           var wholink = 'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
-          var aerial = L.tileLayer(
+
+
+            
+
+            var aerial = L.tileLayer(
             'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
               maxZoom: 18,
               attribution: '&copy; ' + mapLink + ', ' + wholink
             });
 
           var osm = L.tileLayer('http://{s}.tiles.mapbox.com/v4/cropper.lnepd0j8/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY3JvcHBlciIsImEiOiJ5T2lwVjE0In0.kMLCv_sm4-KJDFIWWQl3QQ').addTo(map);
-          //var osm = L.mapbox.tileLayer('dnns.tm2-basemap').addTo(map);
 
-          L.control.layers({
+
+
+            var baseMaps = {
+              "OpenStreetMaps" : osm,
+                "Aerial":aerial
+
+
+            };
+
+
+            //Temperature overlay
+            var tempMap = L.tileLayer('http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png', {
+                attribution: 'Map data © OpenWeatherMap',
+                maxZoom: 18
+            });
+            tempMap.setOpacity(0.3);
+
+            //Cloud overlay
+            var cloudMap = L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', {
+                attribution: 'Map data © OpenWeatherMap',
+                maxZoom: 18
+            });
+            cloudMap.setOpacity(0.3);
+
+            //Rain overlay
+            var rainMap = L.tileLayer('http://{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png', {
+                attribution: 'Map data © OpenWeatherMap',
+                maxZoom: 18
+            });
+            rainMap.setOpacity(0.3);
+
+
+            //Overlapping maps
+            var overlayMaps = {
+              "Temperature":  tempMap,
+                "Clouds": cloudMap,
+                "Rain":rainMap
+
+            };
+
+
+
+
+
+
+
+
+            L.control.layers({
             'Aerial': aerial,
-            'OpenStreetMap': osm
-          }, {}, {
+            'OpenStreetMap': osm,
+
+
+
+          }, overlayMaps, {
             position: 'topleft'
           }).addTo(map);
-         
+
+
           map.infoControl.setPosition('bottomleft');
           // Initialise the FeatureGroup to store editable layers
           var drawnItems = window.drawnItems = new L.FeatureGroup();
