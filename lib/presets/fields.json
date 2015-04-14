@@ -1,2 +1,34 @@
 {
+  "seeding_date": {
+    "key": "seeding_date",
+    "type": "text",
+    "label": "Seeding date"
+  },
+  "harvesting_date": {
+    "key": "harvesting_date",
+    "type": "text",
+    "label": "Harvesting date"
+  },
+  "crop_type": {
+    "key": "crop_type",
+    "type": "combo",
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "label": "Crop type"
+  },
+  "pesticide": {
+    "key": "pesticide",
+    "type": "text",
+    "label": "Pesticide used"
+  },
+  "notification_email": {
+    "key": "notification_email",
+    "type": "text",
+    "label": "Notification email"
+  }
 }

@@ -1,52 +1,4 @@
 {
-  "catastrophe/Plague": {
-    "icon": "catastrophe",
-    "geometry": [
-      "point",
-      "vertex",
-      "area"
-    ],
-    "tags": {
-      "catastrophe": "Plague"
-    },
-    "name": "Plague"
-  },
-  "catastrophe/Tornado": {
-    "icon": "catastrophe",
-    "geometry": [
-      "point",
-      "vertex",
-      "area"
-    ],
-    "tags": {
-      "catastrophe": "Tornado"
-    },
-    "name": "Tornado"
-  },
-  "catastrophe/Cyclone": {
-    "icon": "catastrophe",
-    "geometry": [
-      "point",
-      "vertex",
-      "area"
-    ],
-    "tags": {
-      "catastrophe": "Cyclone"
-    },
-    "name": "Cyclone"
-  },
-  "catastrophe/Flood": {
-    "icon": "catastrophe",
-    "geometry": [
-      "point",
-      "vertex",
-      "area"
-    ],
-    "tags": {
-      "catastrophe": "Flood"
-    },
-    "name": "Flood"
-  },
   "catastrophe/Avalanche": {
     "icon": "catastrophe",
     "geometry": [
@@ -58,54 +10,6 @@
       "catastrophe": "Avalanche"
     },
     "name": "Avalanche"
-  },
-  "catastrophe/Snowfall": {
-    "icon": "catastrophe",
-    "geometry": [
-      "point",
-      "vertex",
-      "area"
-    ],
-    "tags": {
-      "catastrophe": "Snowfall"
-    },
-    "name": "Snowfall"
-  },
-  "catastrophe/Rise": {
-    "icon": "catastrophe",
-    "geometry": [
-      "point",
-      "vertex",
-      "area"
-    ],
-    "tags": {
-      "catastrophe": "Rise"
-    },
-    "name": "Rise"
-  },
-  "catastrophe/Hail": {
-    "icon": "catastrophe",
-    "geometry": [
-      "point",
-      "vertex",
-      "area"
-    ],
-    "tags": {
-      "catastrophe": "Hail"
-    },
-    "name": "Hail"
-  },
-  "catastrophe/Drought": {
-    "icon": "catastrophe",
-    "geometry": [
-      "point",
-      "vertex",
-      "area"
-    ],
-    "tags": {
-      "catastrophe": "Drought"
-    },
-    "name": "Drought"
   },
   "catastrophe/Blizzard": {
     "icon": "catastrophe",
@@ -119,6 +23,30 @@
     },
     "name": "Blizzard"
   },
+  "catastrophe/Cyclone": {
+    "icon": "catastrophe",
+    "geometry": [
+      "point",
+      "vertex",
+      "area"
+    ],
+    "tags": {
+      "catastrophe": "Cyclone"
+    },
+    "name": "Cyclone"
+  },
+  "catastrophe/Drought": {
+    "icon": "catastrophe",
+    "geometry": [
+      "point",
+      "vertex",
+      "area"
+    ],
+    "tags": {
+      "catastrophe": "Drought"
+    },
+    "name": "Drought"
+  },
   "catastrophe/Electric_storm": {
     "icon": "catastrophe",
     "geometry": [
@@ -130,6 +58,54 @@
       "catastrophe": "Electric_storm"
     },
     "name": "Electric_storm"
+  },
+  "catastrophe/Flood": {
+    "icon": "catastrophe",
+    "geometry": [
+      "point",
+      "vertex",
+      "area"
+    ],
+    "tags": {
+      "catastrophe": "Flood"
+    },
+    "name": "Flood"
+  },
+  "catastrophe/Hail": {
+    "icon": "catastrophe",
+    "geometry": [
+      "point",
+      "vertex",
+      "area"
+    ],
+    "tags": {
+      "catastrophe": "Hail"
+    },
+    "name": "Hail"
+  },
+  "catastrophe/Plague": {
+    "icon": "catastrophe",
+    "geometry": [
+      "point",
+      "vertex",
+      "area"
+    ],
+    "tags": {
+      "catastrophe": "Plague"
+    },
+    "name": "Plague"
+  },
+  "catastrophe/Rise": {
+    "icon": "catastrophe",
+    "geometry": [
+      "point",
+      "vertex",
+      "area"
+    ],
+    "tags": {
+      "catastrophe": "Rise"
+    },
+    "name": "Rise"
   },
   "catastrophe/Sandstorm": {
     "icon": "catastrophe",
@@ -143,6 +119,30 @@
     },
     "name": "Sandstorm"
   },
+  "catastrophe/Snowfall": {
+    "icon": "catastrophe",
+    "geometry": [
+      "point",
+      "vertex",
+      "area"
+    ],
+    "tags": {
+      "catastrophe": "Snowfall"
+    },
+    "name": "Snowfall"
+  },
+  "catastrophe/Tornado": {
+    "icon": "catastrophe",
+    "geometry": [
+      "point",
+      "vertex",
+      "area"
+    ],
+    "tags": {
+      "catastrophe": "Tornado"
+    },
+    "name": "Tornado"
+  },
   "disease/Bacterium": {
     "icon": "disease",
     "geometry": [
@@ -154,18 +154,6 @@
     },
     "terms": [],
     "name": "Bacterium"
-  },
-  "disease/Basin": {
-    "icon": "disease",
-    "geometry": [
-      "point",
-      "area"
-    ],
-    "tags": {
-      "disease": "basin"
-    },
-    "terms": [],
-    "name": "Basin"
   },
   "disease/Mushrooms": {
     "icon": "disease",
@@ -203,6 +191,50 @@
     "terms": [],
     "name": "Virus"
   },
+  "weather/Cloudy": {
+    "geometry": [
+      "area"
+    ],
+    "tags": {
+      "weather": "Cloudy"
+    },
+    "terms": [],
+    "icon": "weather",
+    "name": "Cloudy"
+  },
+  "weather/Hail": {
+    "geometry": [
+      "area"
+    ],
+    "tags": {
+      "weather": "Hail"
+    },
+    "terms": [],
+    "icon": "weather",
+    "name": "Hail"
+  },
+  "weather/Snow": {
+    "geometry": [
+      "area"
+    ],
+    "tags": {
+      "weather": "Snow"
+    },
+    "terms": [],
+    "icon": "weather",
+    "name": "Snow"
+  },
+  "weather/Storm": {
+    "geometry": [
+      "area"
+    ],
+    "tags": {
+      "weather": "Storm"
+    },
+    "terms": [],
+    "icon": "weather",
+    "name": "Storm"
+  },
   "weather/Sunny": {
     "geometry": [
       "area"
@@ -225,49 +257,15 @@
     "icon": "weather",
     "name": "Windy"
   },
-  "weather/Storm": {
+  "area": {
+    "name": "Area",
+    "tags": {
+      "area": "yes"
+    },
     "geometry": [
       "area"
     ],
-    "tags": {
-      "weather": "Storm"
-    },
-    "terms": [],
-    "icon": "weather",
-    "name": "Storm"
-  },
-  "weather/Snow": {
-    "geometry": [
-      "area"
-    ],
-    "tags": {
-      "weather": "Snow"
-    },
-    "terms": [],
-    "icon": "weather",
-    "name": "Snow"
-  },
-  "weather/Hail": {
-    "geometry": [
-      "area"
-    ],
-    "tags": {
-      "weather": "Hail"
-    },
-    "terms": [],
-    "icon": "weather",
-    "name": "Hail"
-  },
-  "weather/Cloudy": {
-    "geometry": [
-      "area"
-    ],
-    "tags": {
-      "weather": "Cloudy"
-    },
-    "terms": [],
-    "icon": "weather",
-    "name": "Cloudy"
+    "matchScore": 0.1
   },
   "line": {
     "name": "Line",
@@ -293,15 +291,46 @@
     ],
     "matchScore": 0.1
   },
-  "relation": {
-    "name": "Relation",
-    "icon": "relation",
+  "crop/Gardening": {
+    "name": "Gardening",
     "tags": {},
     "geometry": [
-      "relation"
+      "area"
     ],
     "fields": [
-      "relation"
+      "seeding_date",
+      "harvesting_date",
+      "crop_type",
+      "pesticide",
+      "notification_email"
+    ]
+  },
+  "crop/Horticulture": {
+    "name": "Horticulture",
+    "tags": {},
+    "geometry": [
+      "area"
+    ],
+    "fields": [
+      "seeding_date",
+      "harvesting_date",
+      "crop_type",
+      "pesticide",
+      "notification_email"
+    ]
+  },
+  "crop/Organic": {
+    "name": "Organic",
+    "tags": {},
+    "geometry": [
+      "area"
+    ],
+    "fields": [
+      "seeding_date",
+      "harvesting_date",
+      "crop_type",
+      "pesticide",
+      "notification_email"
     ]
   }
 }

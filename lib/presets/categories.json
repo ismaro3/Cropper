@@ -4,18 +4,18 @@
     "name": "Catastrophe",
     "icon": "catastrophe",
     "members": [
-      "catastrophe/Plague",
-      "catastrophe/Tornado",
-      "catastrophe/Cyclone",
-      "catastrophe/Flood",
       "catastrophe/Avalanche",
-      "catastrophe/Snowfall",
-      "catastrophe/Rise",
-      "catastrophe/Hail",
-      "catastrophe/Drought",
       "catastrophe/Blizzard",
+      "catastrophe/Cyclone",
+      "catastrophe/Drought",
       "catastrophe/Electric_storm",
-      "catastrophe/Sandstorm"
+      "catastrophe/Flood",
+      "catastrophe/Hail",
+      "catastrophe/Plague",
+      "catastrophe/Rise",
+      "catastrophe/Sandstorm",
+      "catastrophe/Snowfall",
+      "catastrophe/Tornado"
     ],
     "expirations": [
       "1h",
@@ -28,6 +28,20 @@
       "fill": "#F00"
     }
   },
+  "category-crop": {
+    "geometry": "area",
+    "name": "Crop",
+    "icon": "crop",
+    "members": [
+      "crop/Gardening",
+      "crop/Horticulture",
+      "crop/Organic"
+    ],
+    "style": {
+      "stroke": "rgba(140, 208, 95, 0.9)",
+      "fill": "rgba(140, 208, 95, 0.7)"
+    }
+  },
   "category-disease": {
     "geometry": "area",
     "name": "Disease",
@@ -35,9 +49,8 @@
     "members": [
       "disease/Bacterium",
       "disease/Mushrooms",
-      "disease/Virus",
       "disease/Pathogenic",
-      "disease/Nematode"
+      "disease/Virus"
     ],
     "expirations": [
       "1h",
@@ -55,13 +68,12 @@
     "name": "Weather",
     "icon": "weather",
     "members": [
-      "weather/Sunny",
-      "weather/Rain",
-      "weather/Hail",
-      "weather/Storm",
       "weather/Cloudy",
-      "weather/Windy",
-      "weather/Snow"
+      "weather/Hail",
+      "weather/Snow",
+      "weather/Storm",
+      "weather/Sunny",
+      "weather/Windy"
     ],
     "expirations": [
       "1h",
