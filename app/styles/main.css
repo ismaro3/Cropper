@@ -495,6 +495,7 @@ select {
   overflow-y: auto;
   bottom: 0px;
   top: 10px;
+  margin-bottom: 10px;
 }
 .mapLoading {
   position: fixed;
