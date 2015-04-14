@@ -1,19 +1,25 @@
 Cropper
 =========
 
-Cropper is a real-time collaborative social-network made for farmers who want to alert
-to other farmers of dangeours events, like floods, storms, plagues, diseases...
+Cropper is a near real-time crowd-sourced disaster prevention network made for growers to be notified in case of
+dangerous events such as floods, storms, plagues or diseases, among others.
 
-Everyone can submit information of dangeours events associated with a place, and attach information specific to the type of event, like precipitation quantity, custom properties or a photo.
+Anyone can submit information about events associated with a location and attach custom information specific to 
+the type of event or a picture.
 
-The most interesting feature is that farmers can subscribe to zones. They can define notified "zones"; in the case someone posts an event in that zone, an email will be send to the farmer, describing the disease.
+One of the key features of the application is the ability of growers to subscribe to areas. They can define 
+notification areas so that in case someone posts an event in that zone an email will be sent to the grower 
+describing the issue.
 
-Other interesant features are:
+Other interesting features are:
 * real time synchronization of events between all clients.
-* visual hightlights of changes produced by other users.
-* real time advanced chat between clients of the application
+* visual hightlights of changes made by other users.
+* real time advanced chat between users.
 
-Developed for Zaragoza Space App 2015 by Daniel Barea, Diego Ceresuela, Ismael Rodríguez, Sergio Soro and David Vergara.
+Developed for Zaragoza Space Apps 2015 "Crop alert - learning from the growers" Challenge by 
+Daniel Barea, Diego Ceresuela, Ismael Rodríguez, Sergio Soro and David Vergara.
+Based on the application [Ethermap](https://github.com/dwilhelm89/Ethermap) created by [Dennis Wilhelm](https://github.com/dwilhelm89).
+
 ## Creators
 
 **Daniel Barea**
@@ -38,7 +44,7 @@ Developed for Zaragoza Space App 2015 by Daniel Barea, Diego Ceresuela, Ismael R
 **David Vergara**
 - <https://github.com/davidvergara>
 
-##Technologies
+## Technologies
 
 * [node.js]
 * [Leaflet] + [Leaflet.draw]
