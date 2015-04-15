@@ -121,73 +121,147 @@ angular.module('CollaborativeMap')
           var wholink = 'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
 
 
-            
+            /*####DEFINITION OF BASE MAPS#####*/
 
+            //Aerial view
             var aerial = L.tileLayer(
             'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
               maxZoom: 18,
               attribution: '&copy; ' + mapLink + ', ' + wholink
             });
 
-          var osm = L.tileLayer('http://{s}.tiles.mapbox.com/v4/cropper.lnepd0j8/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY3JvcHBlciIsImEiOiJ5T2lwVjE0In0.kMLCv_sm4-KJDFIWWQl3QQ').addTo(map);
-
+            //OpenStreetMap
+            var osm = L.tileLayer('http://{s}.tiles.mapbox.com/v4/cropper.lnepd0j8/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY3JvcHBlciIsImEiOiJ5T2lwVjE0In0.kMLCv_sm4-KJDFIWWQl3QQ').addTo(map);
 
 
             var baseMaps = {
               "OpenStreetMaps" : osm,
                 "Aerial":aerial
-
-
             };
 
+            /*####DEFINITION OF OVERLAY MAPS#####*/
 
             //Temperature overlay
-            var tempMap = L.tileLayer('http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png', {
-                attribution: 'Map data © OpenWeatherMap',
-                maxZoom: 18
-            });
+            var tempMap = L.OWM.temperature();
             tempMap.setOpacity(0.3);
 
+            //Precipitation overlay
+            var precipitationMap = L.OWM.precipitation();
+            precipitationMap.setOpacity(0.5);
+
             //Cloud overlay
-            var cloudMap = L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', {
-                attribution: 'Map data © OpenWeatherMap',
-                maxZoom: 18
-            });
-            cloudMap.setOpacity(0.3);
+            var cloudMap =L.OWM.clouds();
+            cloudMap.setOpacity(0.5);
+
+
+            //Weather overlay
+            var city = L.OWM.current({intervall: 15, lang: 'en'});
 
             //Rain overlay
-            var rainMap = L.tileLayer('http://{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png', {
-                attribution: 'Map data © OpenWeatherMap',
-                maxZoom: 18
+            //var rainMap =L.OWM.rain();
+            //rainMap.setOpacity(0.3);
+
+            /*var nexrad = L.tileLayer.wms("http://sedac.ciesin.columbia.edu/geoserver/wms", {
+                layers: 'aglands:aglands-croplands-2000',
+                format: 'image/png',
+                transparent:true,
+                attribution: "Weather data © 2012 IEM Nexrad"
             });
-            rainMap.setOpacity(0.3);
+
+
+            var airquality = L.tileLayer.wms("http://sedac.ciesin.columbia.edu/geoserver/wms", {
+                layers: 'epi:epi-environmental-performance-index-2014_eh-air-quality',
+                format: 'image/png',
+                transparent:true,
+                attribution: "Weather data © 2012 IEM Nexrad"
+            });
+
+            airquality.setOpacity(0.5);
+
+//drought
+            var drought = L.OWM.cloudsClassic();
+            drought.setOpacity(0.7);*/
+
+
+
+            //NDVI MAP
+            //We calculate the number of map we have to retrievve
+            //Number of map are 1,9,17... (1 + 8n, where n >=0)
+            var now = new Date();
+            var start = new Date(now.getFullYear(), 0, 0);
+            var diff = now - start;
+            var oneDay = 1000 * 60 * 60 * 24;
+            var day = Math.floor(diff / oneDay);
+            //Current day
+            Math.floor((day-15)/8)*8 +1
+
+           //We calculate the number of map, supossing there is a 15-day delay on the upload of the new map
+            var getTime = Math.floor((day-15)/8)*8 + 1;
+            var dayString = getTime+"";
+            while (dayString.length <3) dayString= "0" + dayString;
+
+            var NDVI = L.tileLayer('http://glam1n1.gsfc.nasa.gov/wmt/MODIS/std/GMYD09Q1/NDVI/2015/' + dayString +'/{z}/{x}/{y}.png', {
+                attribution: 'Global Agricultural Monitor © Modis - Nasa',
+                maxZoom: 9
+            });
+            NDVI.setOpacity(0.7);
+
 
 
             //Overlapping maps
             var overlayMaps = {
               "Temperature":  tempMap,
                 "Clouds": cloudMap,
-                "Rain":rainMap
+                "Precipitations":precipitationMap,
+                "Cities Weather" : city,
+                "NDVI (Weekly)": NDVI
 
             };
 
 
 
-
-
-
-
-
-            L.control.layers({
-            'Aerial': aerial,
-            'OpenStreetMap': osm,
-
-
-
-          }, overlayMaps, {
+            L.control.layers(baseMaps, overlayMaps, {
             position: 'topleft'
           }).addTo(map);
 
+
+            //NDVI Legend
+            var ndviLegend = L.control({position: 'bottomleft'});
+            ndviLegend.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'info legend');
+
+                div.innerHTML +=
+                    '<img src="/images/ndvi_legend.png" alt="legend">';
+
+                return div;
+            };
+
+            //Cropland2000 legend
+            var crop2000Legend = L.control({position: 'bottomleft'});
+            crop2000Legend.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'info legend');
+
+                div.innerHTML +=
+                    '<img src="/images/cropland_legend.png" alt="legend">';
+
+                return div;
+            };
+
+
+            map.on('overlayadd', function (eventLayer) {
+                // Switch to the Population legend...
+                if (eventLayer.name == 'NDVI (Weekly)') {
+                    //this.removeControl(populationChangeLegend);
+                    ndviLegend.addTo(this);
+                }
+            });
+            map.on('overlayremove', function (eventLayer) {
+                // Switch to the Population legend...
+                if (eventLayer.name == 'NDVI (Weekly)') {
+                    //this.removeControl(populationChangeLegend);
+                    this.removeControl(ndviLegend);
+                }
+            });
 
           map.infoControl.setPosition('bottomleft');
           // Initialise the FeatureGroup to store editable layers
