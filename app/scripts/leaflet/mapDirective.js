@@ -20,105 +20,9 @@ angular.module('CollaborativeMap')
     function(MapHandler, SynchronizeMap, ApiService) {
       var mapLoadingDiv;
 
-        var disasterIcon = L.icon({
-            iconUrl: '/images/disaster.png',
-            shadowUrl: '',
-
-            iconSize:     [39, 32], // size of the icon
-            shadowSize:   [32, 39], // size of the shadow
-            iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
-            shadowAnchor: [4, 62],  // the same for the shadow
-            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-        });
-
-
-        var cropIcon = L.icon({
-            iconUrl: '/images/crop.png',
-            shadowUrl: '',
-
-            iconSize:     [39, 32], // size of the icon
-            shadowSize:   [32, 39], // size of the shadow
-            iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
-            shadowAnchor: [4, 62],  // the same for the shadow
-            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-        });
-
-        var diseaseIcon = L.icon({
-            iconUrl: '/images/disease.png',
-            shadowUrl: '',
-
-            iconSize:     [39, 32], // size of the icon
-            shadowSize:   [32, 39], // size of the shadow
-            iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
-            shadowAnchor: [4, 62],  // the same for the shadow
-            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-        });
-
-        var weatherIcon = L.icon({
-            iconUrl: '/images/weather.png',
-            shadowUrl: '',
-
-            iconSize:     [39, 32], // size of the icon
-            shadowSize:   [32, 39], // size of the shadow
-            iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
-            shadowAnchor: [4, 62],  // the same for the shadow
-            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-        });
 
 
 
-        //Input: Array of arrays of coordinates: [[X1,Y1],[XN,YN]]
-        //Output: Centroid, with X and Y switched
-
-        var getCentroid = function (arr) {
-            var i = 0;
-            var minX = undefined;
-            var maxX = undefined;
-            var minY = undefined;
-            var maxY = undefined;
-            //For each point of the figure
-            for(i = 0;  i < arr.length; i++){
-                //If the point is defined
-                if(arr[i] != undefined){
-                    var _X = arr[i][0];
-                    var _Y = arr[i][1];
-
-                    if(_X != undefined && _Y != undefined){
-
-
-                        if (_X > maxX || maxX == undefined){
-                            maxX = _X;
-                        }
-                        if(_X < minX || minX == undefined){
-                            minX = _X;
-                        }
-                        if (_Y > maxY || maxY == undefined){
-                            maxY = _Y;
-                        }
-                        if(_Y < minY || minY == undefined){
-                            minY = _Y;
-                        }
-
-                    }
-
-                }
-
-
-            }
-
-            //Calculate centroid
-            if(maxX != undefined && maxY !=undefined){
-                var centerX = minX + ((maxX - minX) /2);
-                var centerY = minY + ((maxY - minY) /2);
-                //Invert coordinates in order to work
-                return [centerY,centerX];
-            }
-            else{
-                return undefined;
-            }
-
-
-        }
       /**
        * Load the features for the current map from the database
        * @param  {String} mapId      the map id
@@ -169,30 +73,6 @@ angular.module('CollaborativeMap')
                 }
 
 
-                //Draw the icon for each category
-           var centroid =  getCentroid(row.doc.geometry.coordinates[0]);
-                if(centroid != undefined){
-
-                    //Icon
-                switch(row.doc.properties.category){
-                    case "category-catastrophe":
-                        L.marker(centroid,{icon: disasterIcon}).addTo(map);
-                        break;
-                    case "category-crop":
-                        L.marker(centroid,{icon: cropIcon}).addTo(map);
-                        break;
-                    case "category-disease":
-                        L.marker(centroid,{icon: diseaseIcon}).addTo(map);
-                        break;
-                    case "category-weather":
-                        L.marker(centroid,{icon: weatherIcon}).addTo(map);
-                        break;
-                }
-                    console.log(row.doc);
-
-
-
-                }
 
           })
           .done(function() {

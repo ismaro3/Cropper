@@ -49,6 +49,7 @@ angular.module('CollaborativeMap')
          * @param {Object} layer the leaflet layer
          */
         editFeature: function(layer) {
+
           //If a feature is already in editing mode, stop before creating a new editHandler
           if (editHandler) {
             this.removeEditHandler();
@@ -68,13 +69,20 @@ angular.module('CollaborativeMap')
           editHandler.enable();
           mapScope.$emit('editHandler', true, editFeatureId);
 
+
           //Directly save the feature on every change
           layer.on('dragend', function() {
+              //removeZoneMarker(layer.feature,map);
+              //addZoneMarker(layer.feature,map);
             editHandler.save();
           });
           layer.on('edit', function() {
+              //removeZoneMarker(layer.feature,map);
+              //addZoneMarker(layer.feature,map);
             editHandler.save();
           });
+
+
         },
 
         /**
@@ -101,7 +109,9 @@ angular.module('CollaborativeMap')
          * Save the changes made via the leaflet.draw edit and remove the edit handler
          */
         saveEditedFeature: function() {
+
           if (editHandler) {
+              addZoneMarker(editHandler.feature,editHandler.map);
             editHandler.save();
             this.removeEditHandler();
           }
@@ -113,6 +123,13 @@ angular.module('CollaborativeMap')
          */
         removeEditHandler: function() {
           if (editHandler) {
+                var i;
+
+              for( i in editHandler._featureGroup._layers )
+                break;
+
+
+              addZoneMarker(editHandler._featureGroup._layers[i].feature,editHandler._map);
             editHandler.disable();
             editHandler = undefined;
             mapScope.$emit('editHandler', false, editFeatureId);
@@ -172,12 +189,16 @@ angular.module('CollaborativeMap')
           deleteHandler.save();
           deleteHandler.disable();
 
+            //we remove the zone marker for that zone
+            removeZoneMarker(delLayer.feature,map);
+
 
           //remove the layer from the map
           this.removeLayer(map, {
             fid: editFeatureId
           }, drawnItems);
 
+            ;
         },
 
         /**
@@ -236,6 +257,7 @@ angular.module('CollaborativeMap')
             'layer': layer.feature,
             'fid': layer.fid
           });
+
         },
 
         /**
@@ -467,6 +489,7 @@ angular.module('CollaborativeMap')
               this.highlightFeature(tmpLayer, color);
             }
           }
+            addZoneMarker(event.feature,map);
           this.handleEditModeOnFeatureUpdate(tmpLayer);
         },
 
