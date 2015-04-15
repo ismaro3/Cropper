@@ -34,7 +34,7 @@ Based on the application [Ethermap](https://github.com/dwilhelm89/Ethermap) crea
 
 **Ismael Rodríguez**
 
-- <https://twitter.com/ismaro9>
+- <https://twitter.com/ismaro39>
 - <https://github.com/ismaro3>
 
 **Sergio Soro**
