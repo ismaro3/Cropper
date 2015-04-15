@@ -111,7 +111,11 @@ angular.module('CollaborativeMap')
         saveEditedFeature: function() {
 
           if (editHandler) {
-              addZoneMarker(editHandler.feature,editHandler.map);
+
+              if(editHandler.feature!=undefined && editHandler.map!=undefined){
+                  addZoneMarker(editHandler.feature,editHandler.map);
+              }
+
             editHandler.save();
             this.removeEditHandler();
           }
