@@ -129,11 +129,15 @@ angular.module('CollaborativeMap')
           if (editHandler) {
                 var i;
 
-              for( i in editHandler._featureGroup._layers )
-                break;
+              if(editHandler._featureGroup != null && editHandler._featureGroup._layers.length>0){
+                  for( i in editHandler._featureGroup._layers )
+                      break;
+                  if(editHandler._featureGroup._layers[i].feature!=undefined){
+                      addZoneMarker(editHandler.feature,editHandler.map);
+                  }
+              }
 
-
-              addZoneMarker(editHandler._featureGroup._layers[i].feature,editHandler._map);
+              
             editHandler.disable();
             editHandler = undefined;
             mapScope.$emit('editHandler', false, editFeatureId);
