@@ -137,7 +137,7 @@ angular.module('CollaborativeMap')
                   }
               }
 
-              
+
             editHandler.disable();
             editHandler = undefined;
             mapScope.$emit('editHandler', false, editFeatureId);
@@ -197,8 +197,12 @@ angular.module('CollaborativeMap')
           deleteHandler.save();
           deleteHandler.disable();
 
-            //we remove the zone marker for that zone
-            removeZoneMarker(delLayer.feature,map);
+           console.log(delLayer.feature.properties.category);
+            if(delLayer.feature !=undefined && delLayer.feature.properties !=undefined && delLayer.feature.properties.category != undefined){
+                //we remove the zone marker for that zone
+                removeZoneMarker(delLayer.feature,map);
+            }
+
 
 
           //remove the layer from the map
@@ -497,7 +501,10 @@ angular.module('CollaborativeMap')
               this.highlightFeature(tmpLayer, color);
             }
           }
-            addZoneMarker(event.feature,map);
+            if(event.feature!=undefined && event.feature.properties != undefined){
+                addZoneMarker(event.feature,map);
+            }
+            //addZoneMarker(event.feature,map);
           this.handleEditModeOnFeatureUpdate(tmpLayer);
         },
 

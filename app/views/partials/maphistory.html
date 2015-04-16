@@ -2,22 +2,44 @@
   <div style="margin: auto; width: 43px;" ng-show="loading">
     <div class="loading"></div>
   </div>
-  <div ng-show="isShowMapHistory">
 
-    <span ng-show="history" style="padding-left: 10px">Latitude:
-      <input type="number" ng-model="latitude">
-    </span>
-      <span ng-show="history" style="padding-left: 10px">Longitude:
-      <input type="number" ng-model="longitude">
-    </span>
-      <br/>
+  <div class="panel panel-default">
+      <div class="panel-heading">Search by coordinates</div>
+      <div class="panel-body">
 
-      <br/>
-   <input type="button" class="btn btn-default" ng-click="updateCoordinates()" value="Find" style="float:right;"ton>
+<form>
+    <span ng-show="history" style="padding-left: 10px">
+        <div class="input-group">
+        <span class="input-group-addon">Latitude</span>
+      <input type="number" class="form-control" ng-model="latitude">
+        </div>
+    </span>
+      <span ng-show="history" style="padding-left: 10px">
+      <div class="input-group">
+          <span class="input-group-addon">Longitude</span>
+          <input type="number" class="form-control" ng-model="longitude">
+      </div>
+    </span>
+      <input type="submit" class="btn btn-danger col-xs-12" ng-click="updateCoordinates()" value="Search!" style="float:right;">
+</form>
+          </div>
+      </div>
+    <div class="panel panel-default">
+    <div class="panel-heading">Search by address</div>
+    <div class="panel-body">
+
+      <span ng-show="history" style="padding-left: 10px">
+          <form>
+      <div class="input-group">
+          <span class="input-group-addon">City</span>
+          <input type="text" class="form-control" ng-model="city">
+      </div>
+    </span>
+      <input type="submit" class="btn btn-danger col-xs-12" ng-click="findCity()" value="Search!" style="float:right;"ton>
+        </form>
+      </div>
 
 
   </div>
-  <div ng-show="isShowFeatureHistory">
-    <feature-history></feature-history>
-  </div>
+
 </div>

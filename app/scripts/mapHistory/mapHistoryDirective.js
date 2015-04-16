@@ -26,6 +26,8 @@ angular.module('CollaborativeMap')
                     scope.isShowMapHistory = true;
                     scope.isShowFeatureHistory = false;
 
+
+
                     /**
                      * Listen to the historyView event. Called when the toolbox history view is opened/closed
                      */
@@ -65,12 +67,27 @@ angular.module('CollaborativeMap')
                     scope.updateCoordinates = function(){
                         window._map.panTo([scope.latitude,scope.longitude]);
                     }
-                    /**
-                     * Manually append actions to the history.
-                     * Used to prevent multiple ajax calls to update the history.
-                     * Can result in different timestamps on different computers
-                     * @param {Object} event map draw event
-                     */
+
+
+
+                    /** Finds a city and moves the map to it */
+                    scope.findCity = function(){
+                        console.log("Searching " + scope.city);
+                        var geocoder = new google.maps.Geocoder();
+                        var address = scope.city;
+                        geocoder.geocode( { 'address': address}, function(results, status) {
+                            console.log(results);
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                scope.latitude = results[0].geometry.location.k;
+                                scope.longitude = results[0].geometry.location.D;
+                                scope.updateCoordinates();
+
+                            }
+
+                        });
+
+
+                    }
 
                     function appendToHistory(event) {
                         if (event.date) {
