@@ -208,7 +208,7 @@ angular.module('CollaborativeMap')
             var dayString = getTime+"";
             while (dayString.length <3) dayString= "0" + dayString;
 
-            var NDVI = L.tileLayer('http://glam1n1.gsfc.nasa.gov/wmt/MODIS/std/GMYD09Q1/NDVI/2015/' + dayString +'/{z}/{x}/{y}.png', {
+            var NDVI = L.tileLayer('http://localhost:8080/http://glam1n1.gsfc.nasa.gov/wmt/MODIS/std/GMYD09Q1/NDVI/2015/' + dayString +'/{z}/{x}/{y}.png', {
                 attribution: 'Global Agricultural Monitor © Modis - Nasa',
                 maxZoom: 9
             });
