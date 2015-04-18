@@ -3,11 +3,14 @@
     "category-disease",
     "category-building",
     "category-weather",
+    "category-subscription",
     "area"
   ],
   "line": [
     "line"
   ],
+
+
   "point": [
     "point"
   ],

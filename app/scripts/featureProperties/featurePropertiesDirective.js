@@ -441,13 +441,10 @@ angular.module('CollaborativeMap')
                         $scope.selectedCategory="category-crop";
                         $scope.selectPresets();
 
-                        setTimeout(function () {
-                            $('#presetSelect')[0].selectedIndex = 1;
-
-                        }, 40);
 
 
-                        $('#presetSelect')[0].selectedIndex = parseInt(1);
+
+
 
                         $scope.selectedFeature.properties.forEach(function (aux) {
                             i++;
@@ -472,7 +469,11 @@ angular.module('CollaborativeMap')
                     $scope.isSubscription = function(){
                         var i = -1;
                         var found = false;
+
+
                         $scope.zoneType="subscription";
+                        $scope.selectedCategory="category-sub";
+                        $scope.selectPresets();
                         $scope.selectedFeature.properties.forEach(function (aux) {
                             i++;
 
@@ -656,7 +657,7 @@ angular.module('CollaborativeMap')
 
                         for (var key in categories) {
                             if (categories[key].geometry.indexOf(geomType) > -1) {
-                                if(key!='category-crop'){
+                                if(key!='category-crop' && key!='category-sub'){
                                     $scope.categories_to_show[key] = categories[key];
                                 }
                                 $scope.categories[key] = categories[key];

@@ -27,6 +27,17 @@ var cropIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
+
+var subscriptionIcon = L.icon({
+    iconUrl: '/images/subscription.png',
+    shadowUrl: '',
+
+    iconSize:     [39, 32], // size of the icon
+    shadowSize:   [32, 39], // size of the shadow
+    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
 var diseaseIcon = L.icon({
     iconUrl: '/images/disease.png',
     shadowUrl: '',
@@ -58,12 +69,14 @@ var markerContainer = {};
 //removes it and creates a new one
 //feature is a "feature" object
 //Stores in markerContainer the added marker
-var addZoneMarker= function(feature, map){
+var addZoneMarker= function(id,feature, map){
 
-    var pastMarker = markerContainer[feature._id];
+    console.log(feature);
+    console.log("Adding marker for id " +id);
+    var pastMarker = markerContainer[id];
     if(pastMarker!=undefined){
         //If it exists, we remove it
-        removeZoneMarker(feature,map);
+        removeZoneMarker(id,feature,map);
     }
 
     var centroid =  getCentroid(feature.geometry.coordinates[0]);
@@ -84,20 +97,23 @@ var addZoneMarker= function(feature, map){
             case "category-weather":
                 icon = weatherIcon;
                 break;
+            case "category-sub":
+                icon = subscriptionIcon;
+                break;
         }
        var marker =  L.marker(centroid,{icon: icon});
         marker.addTo(map);
-        markerContainer[feature._id] =marker;
+        markerContainer[id] =marker;
     }
 
 }
 
 //Removes a zone marker
-var removeZoneMarker = function(feature,map){
+var removeZoneMarker = function(id,feature,map){
 
-    var marker = markerContainer[feature._id];
+    var marker = markerContainer[id];
     map.removeLayer(marker);
-    delete markerContainer[feature._id ];
+    delete markerContainer[id];
 }
 
 //Input: Array of arrays of coordinates: [[X1,Y1],[XN,YN]]

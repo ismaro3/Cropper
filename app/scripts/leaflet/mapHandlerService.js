@@ -113,7 +113,9 @@ angular.module('CollaborativeMap')
           if (editHandler) {
 
               if(editHandler.feature!=undefined && editHandler.map!=undefined){
-                  addZoneMarker(editHandler.feature,editHandler.map);
+                  console.log("aay");
+                  console.log(editHandler);
+                  addZoneMarker(editHandler.feature._id,editHandler.map);
                   console.log("bingo");
               }
 
@@ -134,7 +136,9 @@ angular.module('CollaborativeMap')
                   for( i in editHandler._featureGroup._layers )
                       break;
                   if(editHandler._featureGroup._layers[i].feature!=undefined){
-                      addZoneMarker(editHandler.feature,editHandler.map);
+                      add
+                      console.log(editHandler);
+                      addZoneMarker(editHandler.feature._id,editHandler.feature,editHandler.map);
 
                   }
               }
@@ -202,7 +206,7 @@ angular.module('CollaborativeMap')
            console.log(delLayer.feature.properties.category);
             if(delLayer.feature !=undefined && delLayer.feature.properties !=undefined && delLayer.feature.properties.category != undefined){
                 //we remove the zone marker for that zone
-                removeZoneMarker(delLayer.feature,map);
+                removeZoneMarker(delLayer.feature._id,delLayer.feature,map);
             }
 
 
@@ -504,7 +508,9 @@ angular.module('CollaborativeMap')
             }
           }
             if(event.feature!=undefined && event.feature.properties != undefined){
-                addZoneMarker(event.feature,map);
+                console.log("ayy3");
+                console.log(event);
+                addZoneMarker(event.fid,event.feature,map);
 
             }
             //addZoneMarker(event.feature,map);

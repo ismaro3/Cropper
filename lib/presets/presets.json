@@ -332,5 +332,15 @@
       "pesticide",
       "notification_email"
     ]
+  },
+  "sub/Default": {
+    "name": "defaa",
+    "tags": {},
+    "geometry": [
+      "area"
+    ],
+    "fields": [
+      "seeding_date"
+    ]
   }
 }

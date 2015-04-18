@@ -281,18 +281,17 @@ angular.module('CollaborativeMap')
             edit: false,
             draw: {
               circle: false,
-              rectangle: false,
-              marker: {
-                icon: L.mapbox.marker.icon({})
-              },
-              polyline: {
-                shapeOptions: {
-                  color: '#555555',
-                  fillOpacity: 0.5,
-                  weight: 2,
-                  opacity: 1
-                }
-              },
+                rectangle: {
+                    shapeOptions: {
+                        color: '#FE2E2E',
+                        fillOpacity: 0.5,
+                        weight: 2,
+                        opacity: 1
+                    }
+                },
+              marker: false,
+              polyline: false,
+
               polygon: {
                 shapeOptions: {
                   color: '#555555',
@@ -305,27 +304,10 @@ angular.module('CollaborativeMap')
           });
           map.addControl(drawControl);
 
-          var drawNotificationControl = window._drawControl = new L.Control.Draw({
-              edit: false,
-              draw: {
-                  circle: false,
-                  rectangle: {
-                      shapeOptions: {
-                          color: '#FE2E2E',
-                          fillOpacity: 0.5,
-                          weight: 2,
-                          opacity: 1
-                      }
-                  },
-                  marker: false,
-                  polyline: false,
-                  polygon: false
-              }
-          });
-          map.addControl(drawNotificationControl);
-          L.drawLocal.draw.toolbar.buttons.rectangle = 'Add a notification area';
+
 
           L.drawLocal.edit.handlers.edit.tooltip.subtext = 'Click "Stop Editing" to stop the edit mode';
+
 
           //Drawn features have to be added to the layer group
           map.on('draw:created', function(e) {
