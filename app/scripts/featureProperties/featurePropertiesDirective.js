@@ -412,6 +412,7 @@ angular.module('CollaborativeMap')
                         $scope.selectPresets();
 
 
+
                         $scope.selectedFeature.properties.forEach(function (aux) {
                             i++;
 
