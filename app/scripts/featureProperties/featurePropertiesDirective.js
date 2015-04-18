@@ -72,6 +72,21 @@ angular.module('CollaborativeMap')
 
                         var tmpGeoJSON = $scope.selectedFeature.feature = feature.toGeoJSON();
 
+
+                        if(feature.feature != undefined && feature.feature._id == undefined){
+                            feature.feature._id = feature._leaflet_id;
+                            feature.feature._rev = 0;
+                            feature.feature.lastAction = "user defined";
+                            feature.feature.user = "user";
+
+                        }
+                        console.log(encodeURIComponent(JSON.stringify(feature.feature)));
+                        var conAjax = $http.get("http://192.168.1.121:8080/thermal?json=" + encodeURIComponent(JSON.stringify(feature.feature)));
+                        conAjax.success(function(respuesta){
+                           //Hay que hacer algo con la imagen
+                        });
+
+
                         //Create an Array containing all properties. Has to be included in the feature again
                         for (var prop in tmpGeoJSON.properties) {
                             if (allowedProp(prop)) {
@@ -213,7 +228,7 @@ angular.module('CollaborativeMap')
 
                     $scope.expirationChanged = function () {
 
-                        console.log($scope.selectedFeature.properties);
+                       // console.log($scope.selectedFeature.properties);
 
                         var i = -1;
                         var found = false;

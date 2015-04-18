@@ -30,7 +30,7 @@ angular.module('CollaborativeMap')
                      */
 
                     function activateToolbox() {
-                        if ($scope.views.toolBarIn) {
+                        if ($scope.views.tooflBarIn) {
                             $scope.toggleToolbar('statsView');
                             $scope.$apply();
                         } else if ($scope.views.toolsView) {

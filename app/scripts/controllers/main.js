@@ -26,4 +26,5 @@ angular.module('CollaborativeMap')
       // TesterService.init($scope, undefined);
 
     }
-  ]);
+  ]
+    );
