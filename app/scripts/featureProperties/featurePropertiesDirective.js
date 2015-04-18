@@ -165,7 +165,7 @@ angular.module('CollaborativeMap')
                             $scope.selectedPreset = i;
                             //Wait to let the gui render first and set the selected index for the selectbox
                             setTimeout(function () {
-                                $('#presetSelect')[0].selectedIndex = parseInt(i);
+                                $('#presetSelect')[0].selectedIndex = parseInt(i) + 1;
                             }, 40);
 
                         }
