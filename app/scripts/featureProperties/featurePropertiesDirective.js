@@ -25,11 +25,35 @@ angular.module('CollaborativeMap')
                     $scope.selectedExpiration = '1h';
 
 
+
                     /**
                      * Toggles the visibility of the featureproprties view
                      */
+                    /**
+                     * Loads zone type property
+                     * @returns {string}
+                     *
+                     *
+                     */
+                    $scope.loadZoneType= function(){
+                        var i = -1;
+                        var found = false;
+                        var result = "event";
+                        $scope.selectedFeature.properties.forEach(function (aux) {
+                            i++;
 
+
+                            if(aux.key  == "zoneType"){
+                                result = $scope.selectedFeature.properties[i].value;
+
+                            }
+
+                        });
+
+                        return result;
+                    };
                     function activateToolbox() {
+                        $scope.zoneType='event';
                         if ($scope.views.toolBarIn) {
                             $scope.toggleToolbar('toolsView');
                             $scope.$apply();
@@ -98,8 +122,11 @@ angular.module('CollaborativeMap')
                         }
 
 
-                        // MODIFIED
+                        // Load of properties at panel-render time
                         $scope.selectedExpiration = tmpGeoJSON.properties.expiration;
+                        $scope.email = tmpGeoJSON.properties.email;
+                        $scope.zoneType = tmpGeoJSON.properties.zoneType;
+                       // $scope.selectedPreset = tmpGeoJSON.properties.preset;
                         if ($scope.selectedExpiration) {
                             $scope.default = $scope.selectedExpiration;
                         } else {
@@ -138,7 +165,7 @@ angular.module('CollaborativeMap')
                             $scope.selectedPreset = i;
                             //Wait to let the gui render first and set the selected index for the selectbox
                             setTimeout(function () {
-                                $('#presetSelect')[0].selectedIndex = parseInt(i) + 1;
+                                $('#presetSelect')[0].selectedIndex = parseInt(i);
                             }, 40);
 
                         }
@@ -182,7 +209,7 @@ angular.module('CollaborativeMap')
                      */
 
                     function allowedProp(prop) {
-                        var notAllowed = ['category', 'preset', 'stroke', 'stroke-width', 'stroke-dasharray', 'stroke-linecap', 'fill'];
+                        var notAllowed = ['category', 'preset', 'stroke', 'stroke-width', 'stroke-dasharray', 'stroke-linecap', 'fill','zoneType','email'];
                         //var notAllowed = ['category', 'preset'];
                         if (notAllowed.indexOf(prop) > -1) {
                             return false;
@@ -276,6 +303,34 @@ angular.module('CollaborativeMap')
                      * @param {Number} key key code of the ng-key event
                      */
 
+
+                    $scope.updateMail = function(){
+                        var i = -1;
+                        var found = false;
+                        $scope.selectedFeature.properties.forEach(function (aux) {
+                            i++;
+
+
+                            console.log(i);
+                            if(aux.key  == "email"){
+                                $scope.selectedFeature.properties[i].value = $scope.email;
+
+                                found = true;
+                            }
+
+
+                        });
+                        if(found==false){
+                            $scope.selectedFeature.properties.push({
+                                'key':'email',
+                                'value' : $scope.email
+                            });
+                        }
+
+                        $scope.propertyChanged();
+
+                    };
+
                     $scope.newProperty = function (key) {
                         var newProp = function () {
                             if ($scope.newKey && $scope.newValue) {
@@ -296,6 +351,10 @@ angular.module('CollaborativeMap')
                         }
                     };
 
+                    /**
+                     * Loads image property
+                     * @returns {string}
+                     */
                     $scope.loadImage = function(){
                         var i = -1;
                         var found = false;
@@ -310,9 +369,130 @@ angular.module('CollaborativeMap')
                             }
 
                         });
-                        console.log("obtenida imagen: " + result);
+
                         return result;
                     };
+
+                    /** Loads mail property **/
+                    $scope.loadMail = function(){
+                        var i = -1;
+                        var found = false;
+                        var result = "";
+                        $scope.selectedFeature.properties.forEach(function (aux) {
+                            i++;
+
+
+                            if(aux.key  == "email"){
+                                result = $scope.selectedFeature.properties[i].value;
+
+                            }
+
+                        });
+
+                        return result;
+                    };
+
+
+
+
+                    $scope.isEvent = function(){
+                        var i = -1;
+                        var found = false;
+
+                        $scope.zoneType="event";
+
+
+                        setTimeout(function () {
+                            $('#presetSelect')[0].selectedIndex = 1;
+
+                        }, 40);
+
+                        $scope.selectedCategory="category-catastrophe";
+                        $scope.selectedExpiration='1h';
+                        $scope.selectPresets();
+
+
+                        $scope.selectedFeature.properties.forEach(function (aux) {
+                            i++;
+
+                            console.log(i);
+                            if(aux.key  == "zoneType"){
+                                $scope.selectedFeature.properties[i].value = 'event';
+                                found = true;
+                            }
+
+                        });
+                        if(found==false){
+                            console.log("No encontrada la propieada");
+                            $scope.selectedFeature.properties.push({
+                                'key':'zoneType',
+                                'value' : 'event'
+                            });
+                        }
+                        $scope.propertyChanged();
+                    };
+
+                    $scope.isCrop= function(){
+                        var i = -1;
+                        var found = false;
+                        $scope.zoneType="crop";
+                        //$scope.email = $scope.tmpGeoJSON.properties.email;
+                        //Current category is crop
+                        $scope.selectedCategory="category-crop";
+                        $scope.selectPresets();
+
+                        setTimeout(function () {
+                            $('#presetSelect')[0].selectedIndex = 1;
+
+                        }, 40);
+
+
+                        $('#presetSelect')[0].selectedIndex = parseInt(1);
+
+                        $scope.selectedFeature.properties.forEach(function (aux) {
+                            i++;
+
+                            console.log(i);
+                            if(aux.key  == "zoneType"){
+                                $scope.selectedFeature.properties[i].value = 'crop';
+                                found = true;
+                            }
+
+                        });
+                        if(found==false){
+                            console.log("No encontrada la propieada");
+                            $scope.selectedFeature.properties.push({
+                                'key':'zoneType',
+                                'value' : 'crop'
+                            });
+                        }
+                        $scope.propertyChanged();
+                    };
+
+                    $scope.isSubscription = function(){
+                        var i = -1;
+                        var found = false;
+                        $scope.zoneType="subscription";
+                        $scope.selectedFeature.properties.forEach(function (aux) {
+                            i++;
+
+                            console.log(i);
+                            if(aux.key  == "zoneType"){
+                                $scope.selectedFeature.properties[i].value = 'subscription';
+                                found = true;
+                            }
+
+                        });
+                        if(found==false){
+                            console.log("No encontrada la propieada");
+                            $scope.selectedFeature.properties.push({
+                                'key':'zoneType',
+                                'value' : 'subscription'
+                            });
+                        }
+                        $scope.propertyChanged();
+                    };
+
 
 
                     $scope.newEmail = function() {
@@ -329,12 +509,14 @@ angular.module('CollaborativeMap')
 
                         });
                         if(found==false){
+                            console.log("No encontrada la propieada");
                             $scope.selectedFeature.properties.push({
                                 'key':'email',
                                 'value' : $scope.selectedMail
                             });
                         }
 
+                        console.log("Guardando mail");
                         $scope.propertyChanged();
                     }
 
@@ -470,9 +652,13 @@ angular.module('CollaborativeMap')
                     function selectCategoriesForGeomType(layer) {
                         var geomType = MapHandler.getLayerType(layer);
                         $scope.categories = {};
+                        $scope.categories_to_show = {};
 
                         for (var key in categories) {
                             if (categories[key].geometry.indexOf(geomType) > -1) {
+                                if(key!='category-crop'){
+                                    $scope.categories_to_show[key] = categories[key];
+                                }
                                 $scope.categories[key] = categories[key];
                             }
                         }
@@ -516,6 +702,7 @@ angular.module('CollaborativeMap')
                         $scope.selectedMail = "";
                         $scope.selectedImage = "";
                         $scope.selectedPreset = undefined;
+                        //$scope.email = $scope.selectedFeature.properties.email;
                         var selCategory = $scope.selectedCategory;
 
                         if (selCategory) {
@@ -617,14 +804,7 @@ angular.module('CollaborativeMap')
                             var oldPreset = $scope.selectedFeature.feature.properties.preset;
                             $scope.selectedFeature.feature.properties.preset = getSelectedPresetName($scope.selectedPreset);
                             MapHandler.updateOnlyProperties($scope.selectedFeature);
-                            if(getSelectedPresetName($scope.selectedPreset)=="Cyclone"){
-                                console.log("blurulu");
-                                console.log(getSelectedPresetName($scope.selectedPreset));
-                            }
-                            else{
-                                console.log("jujujuju");
-                                console.log(getSelectedPresetName($scope.selectedPreset));
-                            }
+
 
                             members = $scope.presets[$scope.selectedPreset].fields || [];
 

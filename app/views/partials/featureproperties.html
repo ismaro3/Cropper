@@ -3,54 +3,125 @@
         <div ng-if="selectedFeature">
             <!--<input type="button" class="btn btn-default" ng-click="showFeatureHistory(selectedFeature.fid)"
                    value="Show Changes">-->
-            <button type="button" class="btn btn-default" style="float: right" ng-click="deleteFeature()">
-                <span class="glyphicon glyphicon-trash"></span> Delete
-            </button>
-            <br>
-            <span ng-hide="is_subscription">
+            <div class="btn-group col-xs-12" role="group" aria-label="...">
+                <button ng-show="$parent.zoneType == 'event' || $parent.zoneType == undefined" type="button" class="btn btn-success col-xs-3 active"
+                        ng-click="isEvent()">Event
+                </button>
+                <button ng-show="$parent.zoneType != 'event' && $parent.zoneType != undefined" type="button" class="btn btn-success col-xs-3"
+                        ng-click="isEvent()">Event
+                </button>
+                <button ng-show="$parent.zoneType == 'crop'" type="button" class="btn btn-success col-xs-3 active"
+                        ng-click="isCrop()">Crop
+                </button>
+                <button ng-show="$parent.zoneType != 'crop'" type="button" class="btn btn-success col-xs-3"
+                        ng-click="isCrop()">Crop
+                </button>
+                <button ng-show="$parent.zoneType == 'subscription'" type="button"
+                        class="btn btn-success col-xs-6 active" ng-click="isSubscription()">Subscription
+                </button>
+                <button ng-show="$parent.zoneType != 'subscription'" type="button" class="btn btn-success col-xs-6"
+                        ng-click="isSubscription()">Subscription
+                </button>
+
+
+            </div>
+
+
+            <span ng-hide="is_subscription" >
                 <span ng-hide="$parent.loadImage() == undefined">
                     <img src="{{ $parent.loadImage() }}" style="max-width: 300px;">
                 </span>
             </span>
-            <span ng-hide="$parent.is_subscription">
-                <br>
-                <span><br><strong>Category:</strong></span>
-                <select ng-model="$parent.selectedCategory" id="categorySelect" ng-change="selectPresets()">
+
+            <br/><br/>
+
+
+            <div class="panel panel-info" ng-show="$parent.zoneType != 'subscription'">
+                <div class="panel-heading">Main properties</div>
+                <div class="panel-body">
+                    <!-- We only show category on event view -->
+            <span ng-show="$parent.zoneType == 'event' || $parent.zoneType == undefined">
+
+
+                <label>Category</label>
+                <select  ng-model="$parent.selectedCategory" id="categorySelect"
+                        ng-change="selectPresets()">
                     <option value="" disabled selected>Select a category</option>
-                    <option value="{{key}}" ng-repeat="(key, value) in categories">{{categories[key].name}}</option>
+                    <option value="{{key}}" ng-repeat="(key, value) in categories_to_show | filter: {key: '!category-crop'}">{{categories[key].name}}</option>
                 </select>
-                <br>
+
+            </span>
+
+
+                    <!-- We only show subcategory on event and crop view -->
+             <span ng-show="$parent.zoneType == 'event' || $parent.zoneType == undefined || $parent.zoneType == 'crop'">
+
                 <span ng-show="presets">
-                    <span><strong>Subcategory:</strong></span>
-                    <select id="presetSelect" ng-model="$parent.selectedPreset" ng-change="selectFields()">
-                        <option value="" disabled selected>Select a sub category</option>
+                     <label>Subcategory</label>
+                    <select  id="presetSelect" ng-model="$parent.selectedPreset"
+                            ng-change="selectFields()">
+                        <option value="" disabled selected>Select a subcategory</option>
                         <option value="{{key}}" ng-repeat="(key, value) in presets">{{presets[key].name}}</option>
                     </select>
-                    <br>
                 </span>
-                <span><strong>Expiration time:</strong></span>
-                <select id="expirationSelect" ng-model="$parent.selectedExpiration"
-                    ng-options="val for val in getExpirations() " ng-change="expirationChanged()">
-                    <option value="" disabled selected>Select an expiration time</option>
-                </select>
-                <br><br><br><br>
-            </span>
-            <div id="featurePropsForm" ng-repeat="prop in selectedFeature.properties | filter: {key: '!expiration'}">
+             </span>
+
+
+
+
+
+                    <span ng-show="$parent.zoneType == 'event' || $parent.zoneType == undefined">
+                    <label>Expiration time</label>
+                    <select  ng-hide="$parent.zoneType == 'crop'" id="expirationSelect"
+                            ng-model="$parent.selectedExpiration"
+                            ng-options="val for val in getExpirations() " ng-change="expirationChanged()">
+
+                    </select>
+                 </span>
+
+                </div>
+            </div>
+            <!-- We only show expiration time on event view -->
+
+            <!-- Subscription data panel -->
+            <div ng-show="$parent.zoneType != 'event' && $parent.zoneType != undefined" class="panel panel-info">
+                <div class="panel-heading">Subscription data</div>
+                <div class="panel-body">
+                    <!--<div class="input-group">
+                        <span class="input-group-addon">Zone name</span>
+                        <input type="text" class="form-control" ng-model="city">
+                    </div>-->
+                    <br/>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">Mail</span>
+                        <input type="text" class="form-control" ng-model="$parent.email"
+                               value="{{$parent.loadMail()}}" ng-change="updateMail()">
+                    </div>
+
+                </div>
+            </div>
+
+            <br/>
+
+            <div ng-hide="$parent.zoneType=='subscription'" id="featurePropsForm"
+                 ng-repeat="prop in selectedFeature.properties | filter: {key: '!expiration',key: '!zoneType', key: '!email'}">
                 <div class="input-group">
                     <label class="input-group-addon propertyLabel" for="{{prop.key}}">{{prop.key}}</label>
                     <input type="text" class="form-control" value="{{prop.value}}" id="{{prop.key}}"
                            ng-model="prop.value" ng-change="propertyChanged()">
                     <span class="input-group-btn">
-                        <button class="btn btn-default propertyRemoveBtn" type="button" ng-click="removeProperty($index)">-</button>
+                        <button class="btn btn-default propertyRemoveBtn" type="button"
+                                ng-click="removeProperty($index)">-
+                        </button>
                     </span>
                 </div>
             </div>
-            <span ng-hide="is_subscription">
+
+            <span>
             <div ng-hide="selectedFeature.properties.length">This feature has no properties yet.</div>
-                <input type="button" class="btn btn-default" ng-click="newImage()" value="Add Image URL">
-                <br>
-                <input type="button" class="btn btn-default" ng-click="addNewProperty($event)" value="Add new Property">
-                <br>
+
+
             </span>
             <span ng-show="is_subscription">
                 Insert your e-mail to receive notifications of this zone
@@ -59,9 +130,31 @@
             </span>
             <input type="button" class="btn btn-default stopEditBtn orangeBackground" id="stopEditBtn"
                    ng-click="cancelEditMode()" value="Stop Editing">
-            <span ng-hide="is_subscription">
-                <a href="https://twitter.com/share"  target="_blank" class="btn btn-default" data-text="Crooooper" data-size="large" data-hashtags="cropper">Tweet</a>
-            </span>
+
+
+            <div>
+
+                <!-- Add property button-->
+
+                <button type="button" class="btn btn-primary col-xs-6" ng-click="addNewProperty($event)">
+                    <span class="glyphicon glyphicon-plus"></span> Add new Property
+                </button>
+                <!--Tweet button-->
+                <a href="https://twitter.com/share" target="_blank" class="btn btn-primary col-xs-6"
+                   data-text="Crooooper"
+                   data-size="large" data-hashtags="cropper">
+                    <span class="glyphicon glyphicon-share-alt"></span> Tweet
+                </a>
+                <!--Image URL button -->
+                <button type="button" class="btn btn-primary col-xs-6" ng-click="newImage()">
+                    <span class="glyphicon glyphicon-camera"></span> Add Image URL
+                </button>
+                <!--Delete feature button-->
+                <button type="button" class="btn btn-danger col-xs-6" ng-click="deleteFeature()">
+                    <span class="glyphicon glyphicon-trash"></span> Delete
+                </button>
+            </div>
+            <br>
         </div>
         <div ng-if="!selectedFeature">
             Click on a feature to open it's properties...
@@ -80,6 +173,7 @@
     </div>
     <div class="otherEditors" ng-show="editByUser.length > 0">
         <h4>Other users editing this feature</h4>
+
         <div ng-repeat="editUser in editByUser">
             {{editUser}}
         </div>

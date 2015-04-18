@@ -114,6 +114,7 @@ angular.module('CollaborativeMap')
 
               if(editHandler.feature!=undefined && editHandler.map!=undefined){
                   addZoneMarker(editHandler.feature,editHandler.map);
+                  console.log("bingo");
               }
 
             editHandler.save();
@@ -134,6 +135,7 @@ angular.module('CollaborativeMap')
                       break;
                   if(editHandler._featureGroup._layers[i].feature!=undefined){
                       addZoneMarker(editHandler.feature,editHandler.map);
+
                   }
               }
 
@@ -503,6 +505,7 @@ angular.module('CollaborativeMap')
           }
             if(event.feature!=undefined && event.feature.properties != undefined){
                 addZoneMarker(event.feature,map);
+
             }
             //addZoneMarker(event.feature,map);
           this.handleEditModeOnFeatureUpdate(tmpLayer);

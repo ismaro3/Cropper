@@ -27,8 +27,8 @@
     "label": "Pesticide used"
   },
   "notification_email": {
-    "key": "notification_email",
+    "key": "email",
     "type": "text",
-    "label": "Notification email"
+    "label": "email"
   }
 }
