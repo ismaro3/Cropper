@@ -50,6 +50,7 @@ Based on the application [Ethermap](https://github.com/dwilhelm89/Ethermap) crea
 
 **David Vergara**
 - <https://github.com/davidvergara>
+- <https://twitter.com/DavidLodares>
 
 ## Technologies
 
