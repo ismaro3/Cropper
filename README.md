@@ -84,7 +84,7 @@ chmod +x RUN.sh
 
 ###License
 
-[Apache v2.0](license.md) - Cropper Team 2014. Based on Ethermap by Dennis Wilhelm.
+[Apache v2.0](license.md) - Cropper Team 2014. 
 
 
 
