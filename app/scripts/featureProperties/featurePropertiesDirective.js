@@ -381,7 +381,7 @@ angular.module('CollaborativeMap')
                     $scope.loadImage = function(){
                         var i = -1;
                         var found = false;
-                        var result = "";
+                        var result = undefined;
                         $scope.selectedFeature.properties.forEach(function (aux) {
                             i++;
 

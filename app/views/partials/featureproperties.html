@@ -161,7 +161,7 @@
 
                 <!-- Add property button-->
 
-                <button type="button" class="btn btn-primary col-xs-6" ng-click="addNewProperty($event)">
+                <button ng-hide="$parent.zoneType=='subscription'" type="button" class="btn btn-primary col-xs-6" ng-click="addNewProperty($event)">
                     <span class="glyphicon glyphicon-plus"></span> Add new Property
                 </button>
                 <!--Tweet button-->
@@ -171,7 +171,7 @@
                     <span class="glyphicon glyphicon-share-alt"></span> Tweet
                 </a>
                 <!--Image URL button -->
-                <button type="button" class="btn btn-primary col-xs-6" ng-click="newImage()">
+                <button ng-hide="$parent.zoneType=='subscription'" type="button" class="btn btn-primary col-xs-6" ng-click="newImage()">
                     <span class="glyphicon glyphicon-camera"></span> Add Image URL
                 </button>
                 <!--Delete feature button-->
@@ -197,7 +197,7 @@
             <input id="newValue" type="text" ng-model="newValue" ng-keypress="newProperty($event)">
             <input type="button" class="btn btn-default" ng-click="newProperty()" value="Save">
         </div>
-
+        <br/><br/><br/><br/>
 
         <div  ng-show="editByUser.length > 0">
             <h4>Other users editing this feature</h4>

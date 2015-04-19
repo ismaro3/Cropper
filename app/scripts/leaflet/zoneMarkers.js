@@ -10,7 +10,7 @@ var disasterIcon = L.icon({
 
     iconSize:     [39, 32], // size of the icon
     shadowSize:   [32, 39], // size of the shadow
-    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+    iconAnchor:   [20, 16], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
@@ -22,7 +22,7 @@ var cropIcon = L.icon({
 
     iconSize:     [39, 32], // size of the icon
     shadowSize:   [32, 39], // size of the shadow
-    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+    iconAnchor:   [20, 16], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
@@ -34,7 +34,7 @@ var subscriptionIcon = L.icon({
 
     iconSize:     [39, 32], // size of the icon
     shadowSize:   [32, 39], // size of the shadow
-    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+    iconAnchor:   [20, 16], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
@@ -44,7 +44,7 @@ var diseaseIcon = L.icon({
 
     iconSize:     [39, 32], // size of the icon
     shadowSize:   [32, 39], // size of the shadow
-    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+    iconAnchor:   [20, 16], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
@@ -55,7 +55,7 @@ var weatherIcon = L.icon({
 
     iconSize:     [39, 32], // size of the icon
     shadowSize:   [32, 39], // size of the shadow
-    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+    iconAnchor:   [20, 16], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
