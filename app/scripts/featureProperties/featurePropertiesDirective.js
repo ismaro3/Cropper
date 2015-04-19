@@ -108,6 +108,11 @@ angular.module('CollaborativeMap')
                         var conAjax = $http.get("http://192.168.1.121:8080/thermal?json=" + encodeURIComponent(JSON.stringify(feature.feature)));
                         conAjax.success(function(respuesta){
                             $scope.stats =  respuesta;
+                            var graphData = anomalyToGraph(respuesta);
+                            var ctx = document.getElementById("myChart").getContext("2d");
+
+
+                            var myLineChart = new Chart(ctx).Line(graphData, {bezierCurve: false});
                            //Hay que hacer algo con la imagen
                         }).
                             error(function(respuesta){

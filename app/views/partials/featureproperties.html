@@ -102,7 +102,7 @@
                 </div>
             </div>
 
-            {{ stats }}
+            <canvas  ng-show="$parent.zoneType!='event'" id="myChart" width="320" height="400"></canvas>
             <br/>
 
             <div ng-hide="$parent.zoneType=='subscription'" id="featurePropsForm"
@@ -124,11 +124,7 @@
 
 
             </span>
-            <span ng-show="is_subscription">
-                Insert your e-mail to receive notifications of this zone
-                <input id="e-mail" type="text" ng-model="$parent.selectedMail">
-                <input type="button" class="btn btn-default" ng-click="newEmail()" value="Save">
-            </span>
+
             <input type="button" class="btn btn-default stopEditBtn orangeBackground" id="stopEditBtn"
                    ng-click="cancelEditMode()" value="Stop Editing">
 
@@ -171,12 +167,20 @@
             <input id="newValue" type="text" ng-model="newValue" ng-keypress="newProperty($event)">
             <input type="button" class="btn btn-default" ng-click="newProperty()" value="Save">
         </div>
+
+        <div  ng-show="editByUser.length > 0">
+            <h4>Other users editing this feature</h4>
+
+            <div ng-repeat="editUser in editByUser">
+                {{editUser}}
+            </div>
+        </div>
     </div>
-    <div class="otherEditors" ng-show="editByUser.length > 0">
+    <!--<div class="otherEditors" ng-show="editByUser.length > 0">
         <h4>Other users editing this feature</h4>
 
         <div ng-repeat="editUser in editByUser">
             {{editUser}}
         </div>
-    </div>
+    </div>-->
 </div>

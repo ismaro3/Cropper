@@ -121,7 +121,7 @@ input {
   top: 50px;
   bottom: 0;
   height: 100%;
-  width: 300px;
+  width: 350px;
   background-color: rgba(231, 231, 231, 0.9);
   z-index: 1000;
 }
@@ -184,7 +184,7 @@ input {
 .toolbox-content {
   margin-top: 20px;
   width: 300px;
-  max-height: 290;
+  max-height: 290px;
   overflow: auto;
 }
 .watching {
