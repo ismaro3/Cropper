@@ -95,4 +95,5 @@ chmod +x RUN.sh
 [socket.io]:http://socket.io/
 [Leaflet]:http://leafletjs.com/
 [Leaflet.draw]:https://github.com/Leaflet/Leaflet.draw
+[Chart.js]: http://www.chartjs.org/
 [Java]:https://www.java.com/en/
