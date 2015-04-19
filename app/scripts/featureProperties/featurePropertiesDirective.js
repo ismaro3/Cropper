@@ -107,7 +107,11 @@ angular.module('CollaborativeMap')
                         console.log(encodeURIComponent(JSON.stringify(feature.feature)));
                         var conAjax = $http.get("http://192.168.1.121:8080/thermal?json=" + encodeURIComponent(JSON.stringify(feature.feature)));
                         conAjax.success(function(respuesta){
+                            $scope.stats =  respuesta;
                            //Hay que hacer algo con la imagen
+                        }).
+                            error(function(respuesta){
+                            $scope.stats = undefined;
                         });
 
 

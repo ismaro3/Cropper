@@ -11,8 +11,8 @@
  * @author Dennis Wilhelm
  */
 angular.module('CollaborativeMap')
-  .service('MapHandler', ['Utils', 'Socket',
-    function(Utils, Socket) {
+  .service('MapHandler', ['Utils', 'Socket' ,'$http',
+    function(Utils, Socket, $http) {
 
       var map, drawnItems, mapScope, drawControl;
       var editHandler, editFeatureId;
@@ -113,10 +113,10 @@ angular.module('CollaborativeMap')
           if (editHandler) {
 
               if(editHandler.feature!=undefined && editHandler.map!=undefined){
-                  console.log("aay");
+
                   console.log(editHandler);
                   addZoneMarker(editHandler.feature._id,editHandler.map);
-                  console.log("bingo");
+
               }
 
             editHandler.save();
@@ -508,9 +508,54 @@ angular.module('CollaborativeMap')
             }
           }
             if(event.feature!=undefined && event.feature.properties != undefined){
-                console.log("ayy3");
+
                 console.log(event);
                 addZoneMarker(event.fid,event.feature,map);
+                console.log("Prueba de post");
+
+
+               if(event.feature.properties["zoneType"]==undefined){
+                   event.feature.properties["zoneType"] = "event";
+               }
+
+                if(event.feature.properties["zoneType"]=="event"){
+
+
+                    //console.log(event);
+                   /* if(event.feature != undefined && event.feature._id == undefined){
+
+                        event.feature._id = event.fid;
+                        event.feature._rev = 0;
+                        event.feature.lastAction = "user defined";
+                        event.feature.user = "user";
+
+
+                    }*/
+
+                    var copia=JSON.parse(JSON.stringify(event.feature));
+                    if(event.feature != undefined && event.feature._id == undefined){
+
+                    copia._id = event.fid;
+                     copia._rev = 0;
+                    copia.lastAction = "user defined";
+                    copia.user = "user";
+
+
+                     }
+                    //Only notify if the zone has been created in the session by the current user.
+                    if(copia._rev == 0){
+                        console.log("Tenemos que notificar");
+                        var conAjax = $http.get("http://192.168.1.121:8080/notify?json=" + encodeURIComponent(JSON.stringify(copia)));
+                        conAjax.success(function(respuesta){
+
+                        });
+                    }
+
+
+                }
+
+
+
 
             }
             //addZoneMarker(event.feature,map);
