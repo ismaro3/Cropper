@@ -134,7 +134,7 @@
             <br/>
 
             <div ng-hide="$parent.zoneType=='subscription'" id="featurePropsForm"
-                 ng-repeat="prop in selectedFeature.properties | filter: {key: '!expiration',key: '!zoneType', key: '!email'}">
+                 ng-repeat="prop in selectedFeature.properties | filter: myFilter">
                 <div class="input-group">
                     <label class="input-group-addon propertyLabel" for="{{prop.key}}">{{prop.key}}</label>
                     <input type="text" class="form-control" value="{{prop.value}}" id="{{prop.key}}"

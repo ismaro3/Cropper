@@ -374,6 +374,10 @@ angular.module('CollaborativeMap')
                         }
                     };
 
+                    //Filter for showing properties
+                    $scope.myFilter = function (item) {
+                        return item.key != 'expiration' && item.key != 'zoneType';
+                    };
                     /**
                      * Loads image property
                      * @returns {string}
