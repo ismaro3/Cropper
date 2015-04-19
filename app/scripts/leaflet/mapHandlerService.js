@@ -545,7 +545,7 @@ angular.module('CollaborativeMap')
                     //Only notify if the zone has been created in the session by the current user.
                     if(copia._rev == 0){
                         console.log("Tenemos que notificar");
-                        var conAjax = $http.get("http://cropper.tk:8081/notify?json=" + encodeURIComponent(JSON.stringify(copia)));
+                        var conAjax = $http.get(helper_server +"/notify?json=" + encodeURIComponent(JSON.stringify(copia)));
                         conAjax.success(function(respuesta){
 
                         });

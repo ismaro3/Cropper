@@ -107,7 +107,7 @@ angular.module('CollaborativeMap')
                         }
 
                         console.log(encodeURIComponent(JSON.stringify(feature.feature)));
-                        var conAjax = $http.get("http://cropper.tk:8081/thermal?json=" + encodeURIComponent(JSON.stringify(feature.feature)));
+                        var conAjax = $http.get(helper_server + "/thermal?json=" + encodeURIComponent(JSON.stringify(feature.feature)));
                         conAjax.success(function(respuesta){
                             $scope.stats =  respuesta;
                             document.getElementById("canvasDiv").innerHTML = '<canvas id="myChart" width="320" height="400"></canvas>';
@@ -489,6 +489,44 @@ angular.module('CollaborativeMap')
                             });
                         }
                         $scope.propertyChanged();
+
+                        var copia=JSON.parse(JSON.stringify($scope.selectedFeature.feature));
+
+                        if($scope.selectedFeature != undefined && $scope.selectedFeature.feature._id == undefined){
+
+                            copia._id = $scope.selectedFeature.fid;
+                            copia._rev = 0;
+                            copia.lastAction = "user defined";
+                            copia.user = "user";
+
+
+                        }
+
+
+                        copia.properties.email = "undefined";
+
+                        var conAjax = $http.get(helper_server +"/thermal?json=" + encodeURIComponent(JSON.stringify(copia)));
+                        conAjax.success(function(respuesta){
+                            $scope.stats =  respuesta;
+                            document.getElementById("canvasDiv").innerHTML = '<canvas id="myChart" width="320" height="400"></canvas>';
+                            var graphData = anomalyToGraph(respuesta);
+                            var ctx = document.getElementById("myChart").getContext("2d");
+                            var myLineChart = new Chart(ctx).Line(graphData, {bezierCurve: false});
+
+                            var maxmin = getMaxMinYear(respuesta);
+
+                            $scope.moreAnomalies = maxmin.maxYear;
+                            $scope.lessAnomalies = maxmin.minYear;
+
+                            $("#canvasDiv").append("<b>Year with more anomalies:</b> " + $scope.moreAnomalies );
+                            $("#canvasDiv").append("<br/>");
+                            $("#canvasDiv").append("<b>Year with less anomalies:</b> " + $scope.lessAnomalies );
+
+                        }).
+                            error(function(respuesta){
+                                document.getElementById("canvasDiv").innerHTML = "No data available";
+                                console.log("cant obtain data");
+                            });
                     };
 
                     $scope.isSubscription = function(){
@@ -519,21 +557,23 @@ angular.module('CollaborativeMap')
                         $scope.propertyChanged();
 
 
-                        /*if($scope.selectedFeature != undefined && $scope.selectedFeature._id == undefined){
 
-                         copia._id = event.fid;
+                        var copia=JSON.parse(JSON.stringify($scope.selectedFeature.feature));
+
+                        if($scope.selectedFeature != undefined && $scope.selectedFeature.feature._id == undefined){
+
+                         copia._id = $scope.selectedFeature.fid;
                          copia._rev = 0;
                          copia.lastAction = "user defined";
                          copia.user = "user";
 
 
-                         }*/
-                        var copia=JSON.parse(JSON.stringify($scope.selectedFeature.feature));
-                       copia.properties.push({
-                            'key':'email',
-                            'value' : "undefined"
-                        });
-                        var conAjax = $http.get("http://cropper.tk:8081/thermal?json=" + encodeURIComponent(JSON.stringify(copia)));
+                         }
+
+
+                        copia.properties.email = "undefined";
+
+                        var conAjax = $http.get(helper_server +"/thermal?json=" + encodeURIComponent(JSON.stringify(copia)));
                         conAjax.success(function(respuesta){
                             $scope.stats =  respuesta;
                             document.getElementById("canvasDiv").innerHTML = '<canvas id="myChart" width="320" height="400"></canvas>';
