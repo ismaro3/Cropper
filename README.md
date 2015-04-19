@@ -18,6 +18,8 @@ Other interesting features are:
 * huge log of any event happened.
 * NASA opendata integration.
 
+![Cropper interface](http://imageshack.com/a/img901/1987/t9XaeZ.png)
+
 Developed for Zaragoza Space Apps 2015 "Crop alert - learning from the growers" Challenge by 
 Daniel Barea, Diego Ceresuela, Ismael Rodríguez, Sergio Soro and David Vergara.
 Based on the application [Ethermap](https://github.com/dwilhelm89/Ethermap) created by [Dennis Wilhelm](https://github.com/dwilhelm89).
