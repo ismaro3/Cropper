@@ -15,6 +15,8 @@ Other interesting features are:
 * real time synchronization of events between all clients.
 * visual hightlights of changes made by other users.
 * real time advanced chat between users.
+* huge log of any event happened.
+* NASA opendata integration.
 
 Developed for Zaragoza Space Apps 2015 "Crop alert - learning from the growers" Challenge by 
 Daniel Barea, Diego Ceresuela, Ismael Rodríguez, Sergio Soro and David Vergara.
@@ -53,13 +55,13 @@ Based on the application [Ethermap](https://github.com/dwilhelm89/Ethermap) crea
 * [CouchDB]
 * [Grunt]
 * [Bower]
-
+* [Java]
 
 
 
 ###Install dependencies (Ubuntu)
 
-It is assumed that you have installed node.js (developed using 0.10.26)
+It is assumed that you have installed node.js (developed using 0.10.26) and Java (1.7).
 ```
 sudo apt-get install couchdb
 npm install -g grunt-cli
@@ -68,57 +70,15 @@ npm install -g forever
 
 ```
 
+###Run
 
-###Run for Development
-
-
+It is assumed that you have CouchDB running (sudo service couchdb start).
 ```
-npm install
-bower install
-grunt serve
+chmod +x RUN.sh
+./RUN.sh
 
 ```
 
-###Run for Production
-
-
-```
-npm install
-bower install
-grunt build
-NODE_ENV=production forever -o out.log -e err.log start dist/server.js
-
-```
-
-##### or with Docker and fig
-
-It may be necessary to rename the folder `Ethermap` to `ethermap` (note the lower case e), as Docker cannot create things with uppercase names.
-
-```
-sudo fig up
-```
-Ethermap will be available from http://localhost:8080
-
-
-###Testing
-
-Tests are based on Karma + Jasmine
-
-For single test runs:
-```
-grunt test
-```
-For continuous testing:
-```
-npm install -g karma-cli
-karma start
-```
-
-###Create the JSDoc pages
-
-```
-grunt docs
-```
 
 
 ###License
@@ -135,3 +95,4 @@ grunt docs
 [socket.io]:http://socket.io/
 [Leaflet]:http://leafletjs.com/
 [Leaflet.draw]:https://github.com/Leaflet/Leaflet.draw
+[Java]:https://www.java.com/en/
