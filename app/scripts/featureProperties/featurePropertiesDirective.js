@@ -106,7 +106,7 @@ angular.module('CollaborativeMap')
 
                         }
 
-                        console.log(encodeURIComponent(JSON.stringify(feature.feature)));
+
                         var conAjax = $http.get(helper_server + "/thermal?json=" + encodeURIComponent(JSON.stringify(feature.feature)));
                         conAjax.success(function(respuesta){
                             $scope.stats =  respuesta;
@@ -127,7 +127,7 @@ angular.module('CollaborativeMap')
                         }).
                             error(function(respuesta){
                                 document.getElementById("canvasDiv").innerHTML = "No data available";
-                                console.log("cant obtain data");
+
                         });
 
 
@@ -153,7 +153,7 @@ angular.module('CollaborativeMap')
                             $scope.default = '1h';
                         }
 
-                        console.log(feature);
+
                         if (feature._latlngs &&
                             feature._latlngs[0] && feature._latlngs[1] &&
                             feature._latlngs[2] && feature._latlngs[3] &&
@@ -161,10 +161,10 @@ angular.module('CollaborativeMap')
                             feature._latlngs[1].lat == feature._latlngs[2].lat &&
                             feature._latlngs[3].lat == feature._latlngs[0].lat &&
                             feature._latlngs[2].long == feature._latlngs[3].long) {
-                            console.log('is');
+
                             $scope.is_subscription="true";
                         } else {
-                            console.log('is-not');
+
                             $scope.is_subscription="false";
                         }
 
@@ -173,7 +173,7 @@ angular.module('CollaborativeMap')
                         //Preselect the selectboxes if a category/preset is available
                         if (tmpGeoJSON.properties && tmpGeoJSON.properties.category) {
                             $scope.selectedCategory = tmpGeoJSON.properties.category;
-                            console.log("Ha cambiado la categoria a" + $scope.selectedCategory);
+
                             setPresetsInScope($scope.selectedCategory);
 
                             setTimeout(function () {
@@ -248,7 +248,7 @@ angular.module('CollaborativeMap')
                         setTimeout(function () {
                             var tmpDate = new Date().getTime();
                             if ((tmpDate - lastChange) > 900) {
-                                console.log('update property');
+
                                 updateFeature();
                             }
                         }, 1000);
@@ -275,7 +275,7 @@ angular.module('CollaborativeMap')
 
                     $scope.expirationChanged = function () {
 
-                       // console.log($scope.selectedFeature.properties);
+
 
                         var i = -1;
                         var found = false;
@@ -283,10 +283,10 @@ angular.module('CollaborativeMap')
                             i++;
 
 
-                            console.log(i);
+
                             if(aux.key  == "expiration"){
                                 $scope.selectedFeature.properties[i].value = $scope.selectedExpiration;
-                                console.log("DONE!: " + $scope.selectedFeature.properties[i].value);
+
                                 found = true;
                             }
 
@@ -331,7 +331,7 @@ angular.module('CollaborativeMap')
                             i++;
 
 
-                            console.log(i);
+
                             if(aux.key  == "email"){
                                 $scope.selectedFeature.properties[i].value = $scope.email;
 
@@ -376,7 +376,7 @@ angular.module('CollaborativeMap')
 
                     //Filter for showing properties
                     $scope.myFilter = function (item) {
-                        return item.key != 'expiration' && item.key != 'zoneType';
+                        return item.key != 'expiration' && item.key != 'zoneType' && item.key != 'email'
                     };
                     /**
                      * Loads image property
@@ -443,7 +443,7 @@ angular.module('CollaborativeMap')
                         $scope.selectedFeature.properties.forEach(function (aux) {
                             i++;
 
-                            console.log(i);
+
                             if(aux.key  == "zoneType"){
                                 $scope.selectedFeature.properties[i].value = 'event';
                                 found = true;
@@ -451,7 +451,7 @@ angular.module('CollaborativeMap')
 
                         });
                         if(found==false){
-                            console.log("No encontrada la propieada");
+
                             $scope.selectedFeature.properties.push({
                                 'key':'zoneType',
                                 'value' : 'event'
@@ -478,7 +478,7 @@ angular.module('CollaborativeMap')
                         $scope.selectedFeature.properties.forEach(function (aux) {
                             i++;
 
-                            console.log(i);
+
                             if(aux.key  == "zoneType"){
                                 $scope.selectedFeature.properties[i].value = 'crop';
                                 found = true;
@@ -486,7 +486,7 @@ angular.module('CollaborativeMap')
 
                         });
                         if(found==false){
-                            console.log("No encontrada la propieada");
+
                             $scope.selectedFeature.properties.push({
                                 'key':'zoneType',
                                 'value' : 'crop'
@@ -529,7 +529,7 @@ angular.module('CollaborativeMap')
                         }).
                             error(function(respuesta){
                                 document.getElementById("canvasDiv").innerHTML = "No data available";
-                                console.log("cant obtain data");
+
                             });
                     };
 
@@ -544,7 +544,7 @@ angular.module('CollaborativeMap')
                         $scope.selectedFeature.properties.forEach(function (aux) {
                             i++;
 
-                            console.log(i);
+
                             if(aux.key  == "zoneType"){
                                 $scope.selectedFeature.properties[i].value = 'subscription';
                                 found = true;
@@ -552,7 +552,7 @@ angular.module('CollaborativeMap')
 
                         });
                         if(found==false){
-                            console.log("No encontrada la propieada");
+
                             $scope.selectedFeature.properties.push({
                                 'key':'zoneType',
                                 'value' : 'subscription'
@@ -597,7 +597,7 @@ angular.module('CollaborativeMap')
                         }).
                             error(function(respuesta){
                                 document.getElementById("canvasDiv").innerHTML = "No data available";
-                                console.log("cant obtain data");
+
                             });
                     };
 
@@ -609,7 +609,7 @@ angular.module('CollaborativeMap')
                         $scope.selectedFeature.properties.forEach(function (aux) {
                             i++;
 
-                            console.log(i);
+
                             if(aux.key  == "email"){
                                 $scope.selectedFeature.properties[i].value = $scope.selectedMail;
                                 found = true;
@@ -617,14 +617,14 @@ angular.module('CollaborativeMap')
 
                         });
                         if(found==false){
-                            console.log("No encontrada la propieada");
+
                             $scope.selectedFeature.properties.push({
                                 'key':'email',
                                 'value' : $scope.selectedMail
                             });
                         }
 
-                        console.log("Guardando mail");
+
                         $scope.propertyChanged();
                     }
 
@@ -634,7 +634,7 @@ angular.module('CollaborativeMap')
                         $scope.selectedFeature.properties.forEach(function (aux) {
                             i++;
 
-                            console.log(i);
+
                             if(aux.key  == "image"){
                                 $scope.selectedFeature.properties[i].value = $scope.selectedImage;
                                 found = true;
@@ -818,9 +818,7 @@ angular.module('CollaborativeMap')
                             $scope.selectedFeature.feature.properties.category = selCategory;
                             setStyleFromCategory(selCategory);
                             MapHandler.updateOnlyProperties($scope.selectedFeature);
-                            //if(selCategory=Cyclone){
-                              //  console.log("blurulu");
-                            //}
+
 
                             //Set to scope array
                             setPresetsInScope(selCategory);

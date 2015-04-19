@@ -50,9 +50,10 @@ angular.module('CollaborativeMap')
                     //Tenemos el expirationTime en milisegundos
                     if  (dif > expirationTime){
                         //Borramos
+
                         //remove the layer from the map
                         $scope.selectedFeature = row.doc;
-                        deleteFeature();
+                        //deleteFeature();
                     }
                     else{
                         // This callback will be called everytime a new object is

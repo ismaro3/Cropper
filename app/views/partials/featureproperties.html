@@ -27,11 +27,12 @@
             </div>
 
 
-            <span ng-hide="is_subscription" >
+            <span ng-hide="$parent.zoneType == 'subscription'" >
                 <span ng-hide="$parent.loadImage() == undefined">
                     <img src="{{ $parent.loadImage() }}" style="max-width: 300px;">
                 </span>
             </span>
+
 
             <br/><br/>
 

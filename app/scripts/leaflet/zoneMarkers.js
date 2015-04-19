@@ -71,8 +71,7 @@ var markerContainer = {};
 //Stores in markerContainer the added marker
 var addZoneMarker= function(id,feature, map){
 
-    console.log(feature);
-    console.log("Adding marker for id " +id);
+
     var pastMarker = markerContainer[id];
     if(pastMarker!=undefined){
         //If it exists, we remove it

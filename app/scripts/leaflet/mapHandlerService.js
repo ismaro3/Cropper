@@ -114,7 +114,7 @@ angular.module('CollaborativeMap')
 
               if(editHandler.feature!=undefined && editHandler.map!=undefined){
 
-                  console.log(editHandler);
+
                   addZoneMarker(editHandler.feature._id,editHandler.map);
 
               }
@@ -136,8 +136,7 @@ angular.module('CollaborativeMap')
                   for( i in editHandler._featureGroup._layers )
                       break;
                   if(editHandler._featureGroup._layers[i].feature!=undefined){
-                      add
-                      console.log(editHandler);
+
                       addZoneMarker(editHandler.feature._id,editHandler.feature,editHandler.map);
 
                   }
@@ -203,7 +202,7 @@ angular.module('CollaborativeMap')
           deleteHandler.save();
           deleteHandler.disable();
 
-           console.log(delLayer.feature.properties.category);
+
             if(delLayer.feature !=undefined && delLayer.feature.properties !=undefined && delLayer.feature.properties.category != undefined){
                 //we remove the zone marker for that zone
                 removeZoneMarker(delLayer.feature._id,delLayer.feature,map);
@@ -509,9 +508,9 @@ angular.module('CollaborativeMap')
           }
             if(event.feature!=undefined && event.feature.properties != undefined){
 
-                console.log(event);
+
                 addZoneMarker(event.fid,event.feature,map);
-                console.log("Prueba de post");
+
 
 
                if(event.feature.properties["zoneType"]==undefined){
@@ -521,16 +520,7 @@ angular.module('CollaborativeMap')
                 if(event.feature.properties["zoneType"]=="event"){
 
 
-                    //console.log(event);
-                   /* if(event.feature != undefined && event.feature._id == undefined){
 
-                        event.feature._id = event.fid;
-                        event.feature._rev = 0;
-                        event.feature.lastAction = "user defined";
-                        event.feature.user = "user";
-
-
-                    }*/
 
                     var copia=JSON.parse(JSON.stringify(event.feature));
                     if(event.feature != undefined && event.feature._id == undefined){
@@ -544,7 +534,7 @@ angular.module('CollaborativeMap')
                      }
                     //Only notify if the zone has been created in the session by the current user.
                     if(copia._rev == 0){
-                        console.log("Tenemos que notificar");
+
                         var conAjax = $http.get(helper_server +"/notify?json=" + encodeURIComponent(JSON.stringify(copia)));
                         conAjax.success(function(respuesta){
 
