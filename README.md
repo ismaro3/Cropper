@@ -18,6 +18,8 @@ Other interesting features are:
 * huge log of any event happened.
 * NASA opendata integration.
 
+For usage and features info, please visit the [project wiki](https://github.com/ismaro3/Cropper/wiki).
+
 ![Cropper interface](http://imageshack.com/a/img901/1987/t9XaeZ.png)
 
 Developed for Zaragoza Space Apps 2015 "Crop alert - learning from the growers" Challenge by 
