@@ -1,5 +1,6 @@
 Cropper
 =========
+###   _"Eye on the sky, feet on the ground"_
 
 Cropper is a near real-time crowd-sourced disaster prevention network made for growers to be notified in case of
 dangerous events such as floods, storms, plagues or diseases, among others.
@@ -17,6 +18,10 @@ Other interesting features are:
 * real time advanced chat between users.
 * huge log of any event happened.
 * NASA opendata integration.
+
+For usage and features info, please visit the [project wiki](https://github.com/ismaro3/Cropper/wiki).
+
+![Cropper interface](http://imageshack.com/a/img901/1987/t9XaeZ.png)
 
 Developed for Zaragoza Space Apps 2015 "Crop alert - learning from the growers" Challenge by 
 Daniel Barea, Diego Ceresuela, Ismael Rodríguez, Sergio Soro and David Vergara.
@@ -53,6 +58,7 @@ Based on the application [Ethermap](https://github.com/dwilhelm89/Ethermap) crea
 * [AngularJS]
 * [socket.io]
 * [CouchDB]
+* [Chart.js]
 * [Grunt]
 * [Bower]
 * [Java]
@@ -83,7 +89,7 @@ chmod +x RUN.sh
 
 ###License
 
-[Apache v2.0](license.md) - Dennis Wilhelm 2014
+[Apache v2.0](license.md) - Cropper Team 2014. 
 
 
 
@@ -95,4 +101,5 @@ chmod +x RUN.sh
 [socket.io]:http://socket.io/
 [Leaflet]:http://leafletjs.com/
 [Leaflet.draw]:https://github.com/Leaflet/Leaflet.draw
+[Chart.js]: http://www.chartjs.org/
 [Java]:https://www.java.com/en/
