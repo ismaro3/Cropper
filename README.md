@@ -53,6 +53,7 @@ Based on the application [Ethermap](https://github.com/dwilhelm89/Ethermap) crea
 * [AngularJS]
 * [socket.io]
 * [CouchDB]
+* [Chart.js]
 * [Grunt]
 * [Bower]
 * [Java]
@@ -83,7 +84,7 @@ chmod +x RUN.sh
 
 ###License
 
-[Apache v2.0](license.md) - Dennis Wilhelm 2014
+[Apache v2.0](license.md) - Cropper Team 2014. Based on Ethermap by Dennis Wilhelm.
 
 
 
