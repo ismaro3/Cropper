@@ -107,7 +107,7 @@ angular.module('CollaborativeMap')
                         }
 
                         console.log(encodeURIComponent(JSON.stringify(feature.feature)));
-                        var conAjax = $http.get("http://192.168.1.121:8080/thermal?json=" + encodeURIComponent(JSON.stringify(feature.feature)));
+                        var conAjax = $http.get("http://cropper.tk:8081/thermal?json=" + encodeURIComponent(JSON.stringify(feature.feature)));
                         conAjax.success(function(respuesta){
                             $scope.stats =  respuesta;
                             document.getElementById("canvasDiv").innerHTML = '<canvas id="myChart" width="320" height="400"></canvas>';
@@ -533,7 +533,7 @@ angular.module('CollaborativeMap')
                             'key':'email',
                             'value' : "undefined"
                         });
-                        var conAjax = $http.get("http://192.168.1.121:8080/thermal?json=" + encodeURIComponent(JSON.stringify(copia)));
+                        var conAjax = $http.get("http://cropper.tk:8081/thermal?json=" + encodeURIComponent(JSON.stringify(copia)));
                         conAjax.success(function(respuesta){
                             $scope.stats =  respuesta;
                             document.getElementById("canvasDiv").innerHTML = '<canvas id="myChart" width="320" height="400"></canvas>';
