@@ -70,6 +70,8 @@
 
 
 
+
+
                     <span ng-show="$parent.zoneType == 'event' || $parent.zoneType == undefined">
                     <label>Expiration time</label>
                     <select  ng-hide="$parent.zoneType == 'crop'" id="expirationSelect"
@@ -102,7 +104,33 @@
                 </div>
             </div>
 
-            <canvas  ng-show="$parent.zoneType!='event'" id="myChart" width="320" height="400"></canvas>
+            <!-- Button trigger modal -->
+            <div class="panel panel-default" id="panel1" ng-hide="$parent.zoneType=='event' || $parent.zoneType==undefined">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-target="#collapseOne"
+                           href="">
+                            Zone stats
+                        </a>
+                    </h4>
+
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <b>Thermal anomalies</b>
+                        <div id = "canvasDiv">
+                        <canvas id="myChart" width="320" height="400"></canvas>
+                            <b>Year with more anomalies:</b> {{ moreAnomalies }} <br/>
+                            <b>Year with less anomalies:</b> {{ lessAnomalies }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="chartDiv">
+
+            </div>
+
             <br/>
 
             <div ng-hide="$parent.zoneType=='subscription'" id="featurePropsForm"
@@ -168,6 +196,7 @@
             <input type="button" class="btn btn-default" ng-click="newProperty()" value="Save">
         </div>
 
+
         <div  ng-show="editByUser.length > 0">
             <h4>Other users editing this feature</h4>
 
@@ -176,6 +205,8 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+
     <!--<div class="otherEditors" ng-show="editByUser.length > 0">
         <h4>Other users editing this feature</h4>
 

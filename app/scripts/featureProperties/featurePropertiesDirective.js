@@ -64,6 +64,7 @@ angular.module('CollaborativeMap')
 
                     }
 
+
                     /**
                      * Opens the featureproperties view, sets the feature as the selected feature within the scope
                      * Pushes the properties to the scope array which is used in ng-repeat
@@ -104,19 +105,29 @@ angular.module('CollaborativeMap')
                             feature.feature.user = "user";
 
                         }
+
                         console.log(encodeURIComponent(JSON.stringify(feature.feature)));
                         var conAjax = $http.get("http://192.168.1.121:8080/thermal?json=" + encodeURIComponent(JSON.stringify(feature.feature)));
                         conAjax.success(function(respuesta){
                             $scope.stats =  respuesta;
+                            document.getElementById("canvasDiv").innerHTML = '<canvas id="myChart" width="320" height="400"></canvas>';
                             var graphData = anomalyToGraph(respuesta);
                             var ctx = document.getElementById("myChart").getContext("2d");
+                           var myLineChart = new Chart(ctx).Line(graphData, {bezierCurve: false});
 
+                            var maxmin = getMaxMinYear(respuesta);
 
-                            var myLineChart = new Chart(ctx).Line(graphData, {bezierCurve: false});
-                           //Hay que hacer algo con la imagen
+                            $scope.moreAnomalies = maxmin.maxYear;
+                            $scope.lessAnomalies = maxmin.minYear;
+
+                            $("#canvasDiv").append("<b>Year with more anomalies:</b> " + $scope.moreAnomalies );
+                            $("#canvasDiv").append("<br/>");
+                            $("#canvasDiv").append("<b>Year with less anomalies:</b> " + $scope.lessAnomalies );
+
                         }).
                             error(function(respuesta){
-                            $scope.stats = undefined;
+                                document.getElementById("canvasDiv").innerHTML = "No data available";
+                                console.log("cant obtain data");
                         });
 
 
@@ -446,6 +457,7 @@ angular.module('CollaborativeMap')
                         var i = -1;
                         var found = false;
                         $scope.zoneType="crop";
+
                         //$scope.email = $scope.tmpGeoJSON.properties.email;
                         //Current category is crop
                         $scope.selectedCategory="category-crop";

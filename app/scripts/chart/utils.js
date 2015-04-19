@@ -38,3 +38,34 @@ var anomalyToGraph = function(data){
     return result;
 
 }
+
+
+var getMaxMinYear = function(data){
+
+
+    var res = data.results;
+    var i;
+    var minData = 9999;
+    var minYear;
+    var maxData = -9999;
+    var maxYear;
+
+
+    for(i = 0; i <res.length; i++){
+        if(res[i].anomaly >= maxData){
+            maxData = res[i].anomaly;
+            maxYear = res[i].year;
+        }
+        if(res[i].anomaly <= minData){
+            minData = res[i].anomaly;
+            minYear = res[i].year;
+        }
+
+    }
+    return { maxYear : maxYear, minYear: minYear};
+
+
+
+
+
+}
