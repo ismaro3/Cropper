@@ -1,6 +1,6 @@
 Cropper
 =========
-###   _"Eye on the sky, feet on the ground"_
+###   _"Eye in the sky, feet on the ground"_
 
 Cropper is a near real-time crowd-sourced disaster prevention network made for growers to be notified in case of
 dangerous events such as floods, storms, plagues or diseases, among others.
