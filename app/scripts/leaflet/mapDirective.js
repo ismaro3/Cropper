@@ -233,6 +233,10 @@ angular.module('CollaborativeMap')
             position: 'topleft'
           }).addTo(map);
 
+            map.setMaxBounds([
+                [84.953828, -179.653976],
+                [-84.938342, 179.103279]
+            ]);
 
             //NDVI Legend
             var ndviLegend = L.control({position: 'bottomleft'});
