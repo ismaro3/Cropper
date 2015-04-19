@@ -349,6 +349,9 @@ angular.module('CollaborativeMap')
 
                         $scope.propertyChanged();
 
+
+
+
                     };
 
                     $scope.newProperty = function (key) {
@@ -514,6 +517,44 @@ angular.module('CollaborativeMap')
                             });
                         }
                         $scope.propertyChanged();
+
+
+                        /*if($scope.selectedFeature != undefined && $scope.selectedFeature._id == undefined){
+
+                         copia._id = event.fid;
+                         copia._rev = 0;
+                         copia.lastAction = "user defined";
+                         copia.user = "user";
+
+
+                         }*/
+                        var copia=JSON.parse(JSON.stringify($scope.selectedFeature.feature));
+                       copia.properties.push({
+                            'key':'email',
+                            'value' : "undefined"
+                        });
+                        var conAjax = $http.get("http://192.168.1.121:8080/thermal?json=" + encodeURIComponent(JSON.stringify(copia)));
+                        conAjax.success(function(respuesta){
+                            $scope.stats =  respuesta;
+                            document.getElementById("canvasDiv").innerHTML = '<canvas id="myChart" width="320" height="400"></canvas>';
+                            var graphData = anomalyToGraph(respuesta);
+                            var ctx = document.getElementById("myChart").getContext("2d");
+                            var myLineChart = new Chart(ctx).Line(graphData, {bezierCurve: false});
+
+                            var maxmin = getMaxMinYear(respuesta);
+
+                            $scope.moreAnomalies = maxmin.maxYear;
+                            $scope.lessAnomalies = maxmin.minYear;
+
+                            $("#canvasDiv").append("<b>Year with more anomalies:</b> " + $scope.moreAnomalies );
+                            $("#canvasDiv").append("<br/>");
+                            $("#canvasDiv").append("<b>Year with less anomalies:</b> " + $scope.lessAnomalies );
+
+                        }).
+                            error(function(respuesta){
+                                document.getElementById("canvasDiv").innerHTML = "No data available";
+                                console.log("cant obtain data");
+                            });
                     };
 
 

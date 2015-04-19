@@ -4,10 +4,10 @@
             <!--<input type="button" class="btn btn-default" ng-click="showFeatureHistory(selectedFeature.fid)"
                    value="Show Changes">-->
             <div class="btn-group col-xs-12" role="group" aria-label="...">
-                <button ng-show="$parent.zoneType == 'event' || $parent.zoneType == undefined" type="button" class="btn btn-success col-xs-3 active"
+                <button ng-show="$parent.zoneType == 'event' || $parent.zoneType == undefined" type="button" class="btn btn-warning col-xs-3 active"
                         ng-click="isEvent()">Event
                 </button>
-                <button ng-show="$parent.zoneType != 'event' && $parent.zoneType != undefined" type="button" class="btn btn-success col-xs-3"
+                <button ng-show="$parent.zoneType != 'event' && $parent.zoneType != undefined" type="button" class="btn btn-warning col-xs-3"
                         ng-click="isEvent()">Event
                 </button>
                 <button ng-show="$parent.zoneType == 'crop'" type="button" class="btn btn-success col-xs-3 active"
@@ -17,9 +17,9 @@
                         ng-click="isCrop()">Crop
                 </button>
                 <button ng-show="$parent.zoneType == 'subscription'" type="button"
-                        class="btn btn-success col-xs-6 active" ng-click="isSubscription()">Subscription
+                        class="btn btn-info col-xs-6 active" ng-click="isSubscription()">Subscription
                 </button>
-                <button ng-show="$parent.zoneType != 'subscription'" type="button" class="btn btn-success col-xs-6"
+                <button ng-show="$parent.zoneType != 'subscription'" type="button" class="btn btn-info col-xs-6"
                         ng-click="isSubscription()">Subscription
                 </button>
 
